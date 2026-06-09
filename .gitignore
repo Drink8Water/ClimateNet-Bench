@@ -31,13 +31,19 @@ Thumbs.db
 # Streamlit
 .streamlit/
 
-# Cache dirs (keep experiment outputs)
+# Cache dirs & generated experiment outputs (keep structure, not data)
 data/outputs/matplotlib-cache/
 outputs/matplotlib-cache/
+outputs/benchmark/
+outputs/experiments/latest/
 data/raw/era5_land/
 
-# Symlink / duplicate experiment dirs
-outputs/experiments/latest/
+# Generated forecasting dataset (too large, rebuilt from features)
+data/processed/forecasting_samples.csv
+data/processed/forecasting_metadata.json
+
+# Pytest
+.pytest_cache/
 
 # Logs
 *.log

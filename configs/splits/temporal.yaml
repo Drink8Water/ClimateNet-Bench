@@ -1,0 +1,16 @@
+# Temporal holdout.
+# =================
+# Train on earlier years, test on a future holdout year.
+#
+# Tests: Can the model generalize to future climate conditions?
+
+protocol: temporal
+split_id: temporal
+train_years: [2019, 2020, 2021]
+val_year: 2022
+test_year: 2023
+seed: 42
+
+note: >
+  No target_year overlap between train and test.  The model must
+  forecast into an unseen future year.

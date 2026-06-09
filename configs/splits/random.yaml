@@ -1,0 +1,20 @@
+# Random split — optimistic baseline ONLY.
+# ==========================================
+# This split randomly shuffles samples into train/val/test.
+# It leaks spatial and temporal information and produces
+# overconfident performance estimates.
+#
+# WARNING: Do NOT report random-split results as primary benchmark
+# results.  Use this ONLY for debugging and as an upper-bound baseline.
+
+protocol: random
+split_id: random
+train_ratio: 0.7
+val_ratio: 0.15
+test_ratio: 0.15
+seed: 42
+
+note: >
+  OPTIMISTIC BASELINE — leaks spatial and temporal information.
+  Random split results must be clearly labelled and should never
+  be the primary reported result.

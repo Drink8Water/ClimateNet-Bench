@@ -1,0 +1,254 @@
+# ClimateNet-Bench: EvapAnomaly-Forecast-v1
+# ==========================================
+# Full benchmark configuration for next-month land evaporation anomaly
+# forecasting using ERA5-Land reanalysis data.
+#
+# Longitude convention: degrees east (negative = west, positive = east).
+
+benchmark_name: EvapAnomaly-Forecast-v1
+version: "1.0.0"
+data_source: ERA5-Land
+temporal_resolution: monthly
+forecast_horizon: 1 month
+input_window: 6 months
+target: evaporation_anomaly
+random_seed: 42
+
+# ---------------------------------------------------------------------------
+# Benchmark regions
+# ---------------------------------------------------------------------------
+# Five geographically and climatically distinct regions.
+# Longitudes are in degrees east (ERA5-Land standard).
+regions:
+  - name: Sahara
+    lat_min: 15.0
+    lat_max: 30.0
+    lon_min: -20.0
+    lon_max: 30.0
+    climate_type: arid
+    description: North African arid/hyper-arid region. Low evaporation signal,
+      extreme surface temperatures, minimal vegetation cover.
+
+  - name: East China
+    lat_min: 20.0
+    lat_max: 35.0
+    lon_min: 105.0
+    lon_max: 122.0
+    climate_type: monsoon
+    description: Humid subtropical and monsoonal climate. Strong seasonal
+      precipitation cycle, high population density, intensive agriculture.
+
+  - name: Amazon
+    lat_min: -15.0
+    lat_max: 5.0
+    lon_min: -75.0
+    lon_max: -50.0
+    climate_type: tropical_humid
+    description: Tropical rainforest with high year-round evaporation,
+      dense vegetation, strong land-atmosphere coupling.
+
+  - name: Central Europe
+    lat_min: 45.0
+    lat_max: 55.0
+    lon_min: 0.0
+    lon_max: 20.0
+    climate_type: temperate
+    description: Temperate continental climate. Moderate evaporation signal,
+      strong anthropogenic land-use influence, distinct seasonal cycle.
+
+  - name: Western US
+    lat_min: 30.0
+    lat_max: 45.0
+    lon_min: -125.0
+    lon_max: -105.0
+    climate_type: semi_arid
+    description: Mediterranean to semi-arid climate. Water-limited evaporation,
+      strong interannual variability, complex topography.
+
+# ---------------------------------------------------------------------------
+# ERA5-Land variables
+# ---------------------------------------------------------------------------
+era5_variables:
+  - name: temperature
+    era5_name: 2m_temperature
+    unit: K
+    description: 2-metre air temperature (monthly mean)
+  - name: precipitation
+    era5_name: total_precipitation
+    unit: m
+    description: Total monthly precipitation
+  - name: radiation
+    era5_name: surface_solar_radiation_downwards
+    unit: J m-2
+    description: Surface solar radiation downwards (monthly mean)
+  - name: evaporation
+    era5_name: total_evaporation
+    unit: m of water
+    description: Total monthly evaporation (target variable raw)
+  - name: soil_moisture
+    era5_name: volumetric_soil_water_layer_1
+    unit: m3 m-3
+    description: Volumetric soil water layer 1 (0-7 cm)
+  - name: u_wind
+    era5_name: 10m_u_component_of_wind
+    unit: m s-1
+    description: 10-metre u-component of wind (monthly mean)
+  - name: v_wind
+    era5_name: 10m_v_component_of_wind
+    unit: m s-1
+    description: 10-metre v-component of wind (monthly mean)
+
+# ---------------------------------------------------------------------------
+# Feature sets (used for ablation studies)
+# ---------------------------------------------------------------------------
+feature_sets:
+  base:
+    description: Spatial and temporal coordinates only
+    features:
+      - latitude
+      - longitude
+      - month_sin
+      - month_cos
+
+  meteorological:
+    description: Core meteorological anomaly variables
+    features:
+      - temperature_anomaly
+      - precipitation_anomaly
+      - radiation_anomaly
+      - soil_moisture_anomaly
+      - wind_speed
+
+  physical:
+    description: Derived physical indices
+    features:
+      - dryness_proxy
+      - saturation_vapor_pressure
+
+  full:
+    description: All available features (base + meteorological + physical)
+    features:
+      - latitude
+      - longitude
+      - month_sin
+      - month_cos
+      - temperature_anomaly
+      - precipitation_anomaly
+      - radiation_anomaly
+      - soil_moisture_anomaly
+      - wind_speed
+      - dryness_proxy
+      - saturation_vapor_pressure
+
+# ---------------------------------------------------------------------------
+# Split protocols
+# ---------------------------------------------------------------------------
+split_protocols:
+  - random_split
+  - spatial_block_holdout
+  - temporal_holdout
+  - region_transfer
+  - climate_zone_transfer
+  - spatial_temporal_holdout
+
+region_transfer_pairs:
+  - train_regions: [Sahara, East China, Amazon, Central Europe]
+    test_regions: [Western US]
+  - train_regions: [Sahara, Amazon, Central Europe, Western US]
+    test_regions: [East China]
+  - train_regions: [East China, Amazon, Central Europe, Western US]
+    test_regions: [Sahara]
+  - train_regions: [Sahara, East China, Central Europe, Western US]
+    test_regions: [Amazon]
+  - train_regions: [Sahara, East China, Amazon, Western US]
+    test_regions: [Central Europe]
+
+climate_zone_pairs:
+  - train_zones: [arid, semi_arid, temperate, monsoon]
+    test_zones: [tropical_humid]
+  - train_zones: [tropical_humid, temperate, monsoon, semi_arid]
+    test_zones: [arid]
+
+# ---------------------------------------------------------------------------
+# Models
+# ---------------------------------------------------------------------------
+models:
+  - name: climatology
+    type: baseline
+    description: Long-term monthly mean per grid cell
+  - name: persistence
+    type: baseline
+    description: Next-month anomaly equals current-month anomaly
+  - name: linear_regression
+    type: linear
+    description: Ridge-regularized linear model (scikit-learn)
+  - name: random_forest
+    type: tree_ensemble
+    description: scikit-learn RandomForestRegressor
+    params:
+      n_estimators: 250
+      min_samples_leaf: 3
+      n_jobs: -1
+  - name: xgboost
+    type: gradient_boosting
+    description: XGBoost regressor
+    params:
+      n_estimators: 300
+      learning_rate: 0.05
+      max_depth: 4
+      subsample: 0.9
+      colsample_bytree: 0.9
+      objective: reg:squarederror
+      n_jobs: 1
+  - name: lightgbm
+    type: gradient_boosting
+    description: LightGBM regressor
+    params:
+      n_estimators: 300
+      learning_rate: 0.05
+      verbose: -1
+  - name: tcn
+    type: deep_learning
+    description: PyTorch Temporal Convolutional Network
+    params:
+      sequence_length: 6
+      epochs: 50
+      batch_size: 128
+      learning_rate: 0.001
+      channels: [32, 32, 32]
+      dropout: 0.2
+
+# ---------------------------------------------------------------------------
+# Evaluation metrics
+# ---------------------------------------------------------------------------
+metrics:
+  primary:
+    - mae
+    - rmse
+    - r2
+
+  skill_scores:
+    - skill_vs_climatology
+    - skill_vs_persistence
+
+  generalization:
+    - ood_degradation
+
+  uncertainty:
+    - conformal_coverage
+    - average_interval_width
+
+# ---------------------------------------------------------------------------
+# Time range for full benchmark
+# ---------------------------------------------------------------------------
+time_range:
+  train_start_year: 2019
+  train_end_year: 2022
+  test_year: 2023
+
+# ---------------------------------------------------------------------------
+# Output
+# ---------------------------------------------------------------------------
+output:
+  root: outputs/benchmark
+  experiment_prefix: evap_anomaly_v1

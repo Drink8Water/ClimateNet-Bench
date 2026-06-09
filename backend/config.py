@@ -10,8 +10,13 @@ DATA_PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 FEATURES_PATH = DATA_PROCESSED_DIR / "features.csv"
 LEGACY_OUTPUTS_DIR = PROJECT_ROOT / "data" / "outputs"
 
+# ── Benchmark paths ──────────────────────────────────────────────
+BENCHMARK_DIR = OUTPUTS_DIR / "benchmark"
+BENCHMARK_EXPERIMENTS_DIR = BENCHMARK_DIR / "experiments"
+BENCHMARK_SPLITS_DIR = BENCHMARK_DIR / "splits"
+
 # Regions and variables available in the dataset
-REGIONS = ["Sahara", "East China"]
+REGIONS = ["Sahara", "East China", "Amazon", "Central Europe", "Western US"]
 ANOMALY_VARIABLES = [
     "evaporation_anomaly",
     "temperature_anomaly",

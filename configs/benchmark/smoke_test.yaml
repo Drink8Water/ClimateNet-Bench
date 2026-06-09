@@ -1,0 +1,121 @@
+# ClimateNet-Bench: Smoke Test Configuration
+# ===========================================
+# Minimal configuration for fast pipeline validation.
+# Uses the same interface as evap_anomaly_v1.yaml but with reduced scope.
+#
+# Longitude convention: degrees east (negative = west, positive = east).
+
+benchmark_name: EvapAnomaly-Forecast-v1-smoke
+version: "1.0.0"
+data_source: synthetic
+temporal_resolution: monthly
+forecast_horizon: 1 month
+input_window: 6 months
+target: y_true
+random_seed: 42
+
+# ---------------------------------------------------------------------------
+# Smoke test regions — subset of full benchmark regions
+# ---------------------------------------------------------------------------
+regions:
+  - name: Sahara
+    lat_min: 15.0
+    lat_max: 30.0
+    lon_min: -20.0
+    lon_max: 30.0
+    climate_type: arid
+    description: Smoke test — Sahara.
+
+  - name: East China
+    lat_min: 20.0
+    lat_max: 35.0
+    lon_min: 105.0
+    lon_max: 122.0
+    climate_type: monsoon
+    description: Smoke test — East China.
+
+# ---------------------------------------------------------------------------
+# Feature sets (reduced for smoke test)
+# ---------------------------------------------------------------------------
+feature_sets:
+  base:
+    description: Spatial and temporal coordinates only
+    features:
+      - latitude
+      - longitude
+      - month_sin
+      - month_cos
+
+  full:
+    description: All available features
+    features:
+      - latitude
+      - longitude
+      - month_sin
+      - month_cos
+      - temperature_anomaly
+      - precipitation_anomaly
+      - radiation_anomaly
+      - soil_moisture_anomaly
+      - wind_speed
+      - dryness_proxy
+      - saturation_vapor_pressure
+
+# ---------------------------------------------------------------------------
+# Split protocols (reduced for smoke test)
+# ---------------------------------------------------------------------------
+split_protocols:
+  - random_split
+  - spatial_block_holdout
+
+region_transfer_pairs:
+  - train_regions: [Sahara]
+    test_regions: [East China]
+
+# ---------------------------------------------------------------------------
+# Models (fastest subset for smoke test)
+# ---------------------------------------------------------------------------
+models:
+  - name: climatology
+    type: baseline
+  - name: persistence
+    type: baseline
+  - name: linear_regression
+    type: linear
+  - name: random_forest
+    type: tree_ensemble
+    params:
+      n_estimators: 50
+      min_samples_leaf: 5
+      n_jobs: -1
+
+# ---------------------------------------------------------------------------
+# Metrics (same interface, reduced set)
+# ---------------------------------------------------------------------------
+metrics:
+  primary:
+    - mae
+    - rmse
+    - r2
+  skill_scores:
+    - skill_vs_climatology
+
+# ---------------------------------------------------------------------------
+# Smoke test time range — small, fast
+# ---------------------------------------------------------------------------
+time_range:
+  train_start_year: 2010
+  train_end_year: 2019
+  test_year: 2020
+
+# ---------------------------------------------------------------------------
+# Synthetic / demo fallback
+# ---------------------------------------------------------------------------
+smoke_test:
+  max_samples: 5000
+  demo_fallback: true
+  demo_data_label: "SYNTHETIC_DEMO_DATA — NOT REAL CLIMATE DATA"
+
+output:
+  root: outputs/benchmark
+  experiment_prefix: smoke_test

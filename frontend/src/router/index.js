@@ -1,47 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-  {
-    path: '/',
-    name: 'Overview',
-    component: () => import('../views/Overview.vue'),
-    meta: { title: 'Overview' },
-  },
-  {
-    path: '/experiments',
-    name: 'ExperimentDashboard',
-    component: () => import('../views/ExperimentDashboard.vue'),
-    meta: { title: 'Experiment Dashboard' },
-  },
-  {
-    path: '/comparison',
-    name: 'ModelComparison',
-    component: () => import('../views/ModelComparison.vue'),
-    meta: { title: 'Model Comparison' },
-  },
-  {
-    path: '/predictions',
-    name: 'PredictionExplorer',
-    component: () => import('../views/PredictionExplorer.vue'),
-    meta: { title: 'Prediction Explorer' },
-  },
-  {
-    path: '/attribution',
-    name: 'FeatureAttribution',
-    component: () => import('../views/FeatureAttribution.vue'),
-    meta: { title: 'Feature Attribution' },
-  },
-  {
-    path: '/spatial',
-    name: 'SpatialViewer',
-    component: () => import('../views/SpatialViewer.vue'),
-    meta: { title: 'Spatial Viewer' },
-  },
+  { path: '/', name: 'Overview', component: () => import('../views/Overview.vue'), meta: { title: 'Benchmark Overview' } },
+  { path: '/leaderboard', name: 'Leaderboard', component: () => import('../views/Leaderboard.vue'), meta: { title: 'Leaderboard' } },
+  { path: '/split-difficulty', name: 'SplitDifficulty', component: () => import('../views/SplitDifficulty.vue'), meta: { title: 'Split Difficulty' } },
+  { path: '/forecast', name: 'ForecastExplorer', component: () => import('../views/ForecastExplorer.vue'), meta: { title: 'Forecast Explorer' } },
+  { path: '/uncertainty', name: 'Uncertainty', component: () => import('../views/UncertaintyCalibration.vue'), meta: { title: 'Uncertainty Calibration' } },
+  { path: '/physical', name: 'PhysicalAudit', component: () => import('../views/PhysicalAudit.vue'), meta: { title: 'Physical Consistency' } },
+  { path: '/spatial', name: 'Spatial', component: () => import('../views/SpatialDiagnostics.vue'), meta: { title: 'Spatial Diagnostics' } },
+  // Legacy routes — keep working
+  { path: '/experiments', redirect: '/forecast' },
+  { path: '/comparison', redirect: '/leaderboard' },
+  { path: '/predictions', redirect: '/forecast' },
+  { path: '/attribution', redirect: '/physical' },
 ]
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-})
-
+const router = createRouter({ history: createWebHistory(), routes })
 export default router

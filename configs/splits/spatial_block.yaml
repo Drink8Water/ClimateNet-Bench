@@ -1,0 +1,17 @@
+# Spatial block holdout.
+# ======================
+# Split by 5-degree spatial blocks.  All samples from a given block
+# go to exactly one split (train, val, or test).
+#
+# Tests: Can the model generalize to unseen geographic blocks?
+
+protocol: spatial_block
+split_id: spatial_block
+block_size_deg: 5.0
+train_ratio: 0.7
+val_ratio: 0.15
+seed: 42
+
+note: >
+  No grid_id overlap between train and test.  All samples from
+  each spatial block are assigned together.

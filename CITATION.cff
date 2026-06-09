@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: "ClimateNet-Bench: A Spatio-Temporal ML Benchmark for Land Evaporation Anomaly Forecasting"
+message: "If you use ClimateNet-Bench in your research, please cite it as follows."
+type: software
+authors:
+  - given-names: ClimateNet-Bench
+    name: "ClimateNet-Bench Contributors"
+repository-code: "https://github.com/Drink8Water/ClimateNet-Bench"
+url: "https://github.com/Drink8Water/ClimateNet-Bench"
+abstract: >
+  A reproducible spatio-temporal machine learning benchmark for next-month
+  land evaporation anomaly forecasting using ERA5-Land reanalysis data.
+  Evaluates models under six split protocols of increasing difficulty:
+  random, spatial block, temporal holdout, region transfer, climate-zone
+  transfer, and spatial-temporal holdout. Includes climatology and
+  persistence baselines, linear regression, random forest, XGBoost,
+  LightGBM, TCN, conformal prediction intervals, physical consistency
+  audit, and an interactive FastAPI + Vue benchmark portal.
+keywords:
+  - climate-science
+  - machine-learning
+  - benchmark
+  - spatio-temporal
+  - era5-land
+  - forecasting
+  - evaporation
+  - uncertainty-quantification
+license: MIT
+version: 0.3.0
+date-released: 2026-06-09

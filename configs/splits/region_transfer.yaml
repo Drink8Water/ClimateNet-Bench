@@ -1,0 +1,28 @@
+# Region transfer.
+# =================
+# Train on some benchmark regions, test on held-out region(s).
+#
+# Tests: Can the model transfer to unseen climate regions?
+
+protocol: region_transfer
+split_id: region_transfer
+train_regions: [Sahara, Amazon, Central Europe, Western US]
+test_regions: [East China]
+val_ratio: 0.15
+seed: 42
+
+# Additional pairs can be specified for multi-direction transfer.
+pairs:
+  - train_regions: [Sahara, Amazon, Central Europe, Western US]
+    test_regions: [East China]
+  - train_regions: [East China, Amazon, Central Europe, Western US]
+    test_regions: [Sahara]
+  - train_regions: [Sahara, East China, Central Europe, Western US]
+    test_regions: [Amazon]
+  - train_regions: [Sahara, East China, Amazon, Western US]
+    test_regions: [Central Europe]
+  - train_regions: [Sahara, East China, Amazon, Central Europe]
+    test_regions: [Western US]
+
+note: >
+  Train and test region sets must be completely disjoint.

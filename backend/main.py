@@ -11,18 +11,22 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from backend.routers import (
     attribution,
+    benchmark,
     comparison,
     experiments,
+    leaderboard,
+    physical,
     predictions,
     spatial,
     summary,
+    uncertainty,
 )
 from backend.schemas import HealthResponse
 
 app = FastAPI(
-    title="ClimateNet API",
-    description="REST API for climate ML experiment results, predictions, feature importance, and spatial data.",
-    version="0.2.0",
+    title="ClimateNet-Bench API",
+    description="REST API for the ClimateNet-Bench benchmark: leaderboard, experiments, predictions, uncertainty, and physical consistency audit.",
+    version="0.3.0",
 )
 
 # Allow the Vue dev server to call the API
@@ -34,7 +38,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ── New file-based routers ──────────────────────────────────────────
+# ── Benchmark routers (new) ───────────────────────────────────────
+app.include_router(benchmark.router)
+app.include_router(leaderboard.router)
+app.include_router(uncertainty.router)
+app.include_router(physical.router)
+
+# ── Existing file-based routers ────────────────────────────────────
 app.include_router(summary.router)
 app.include_router(experiments.router)
 app.include_router(comparison.router)

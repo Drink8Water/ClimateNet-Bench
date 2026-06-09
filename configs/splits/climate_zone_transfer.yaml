@@ -1,0 +1,28 @@
+# Climate-zone transfer.
+# =======================
+# Train on some climate zones, test on a held-out climate zone.
+#
+# Tests: Can the model transfer across fundamentally different
+# climate classifications?
+
+protocol: climate_zone_transfer
+split_id: climate_zone_transfer
+train_zones: [arid, monsoon, temperate, semi_arid]
+test_zones: [tropical_humid]
+val_ratio: 0.15
+seed: 42
+
+pairs:
+  - train_zones: [arid, monsoon, temperate, semi_arid]
+    test_zones: [tropical_humid]
+  - train_zones: [tropical_humid, monsoon, temperate, semi_arid]
+    test_zones: [arid]
+  - train_zones: [tropical_humid, arid, temperate, semi_arid]
+    test_zones: [monsoon]
+  - train_zones: [tropical_humid, arid, monsoon, semi_arid]
+    test_zones: [temperate]
+  - train_zones: [tropical_humid, arid, monsoon, temperate]
+    test_zones: [semi_arid]
+
+note: >
+  Train and test climate-zone sets must be completely disjoint.

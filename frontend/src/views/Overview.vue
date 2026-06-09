@@ -1,115 +1,97 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { fetchProjectSummary, fetchDatasetSummary, fetchExperimentSummary } from '../api/climateApi'
+import { fetchBenchmarkSummary, fetchBenchmarkTask, fetchBenchmarkRegions, fetchBenchmarkSplits } from '../api/climateApi'
 import MetricCard from '../components/common/MetricCard.vue'
 import LoadingState from '../components/common/LoadingState.vue'
 import ErrorMessage from '../components/common/ErrorMessage.vue'
-import BadgeTag from '../components/common/BadgeTag.vue'
 
-const project = ref(null)
-const dataset = ref(null)
-const expSummary = ref(null)
-const loading = ref(true)
-const error = ref(null)
+const summary = ref(null); const task = ref(null)
+const regions = ref([]); const splits = ref([])
+const loading = ref(true); const error = ref('')
 
 onMounted(async () => {
   try {
-    const [p, d, e] = await Promise.all([
-      fetchProjectSummary(),
-      fetchDatasetSummary(),
-      fetchExperimentSummary(),
+    const [s, t, r, sp] = await Promise.all([
+      fetchBenchmarkSummary(), fetchBenchmarkTask(),
+      fetchBenchmarkRegions(), fetchBenchmarkSplits()
     ])
-    project.value = p
-    dataset.value = d
-    expSummary.value = e
-  } catch (err) {
-    error.value = err.message || 'Failed to load dashboard data'
-  } finally {
-    loading.value = false
-  }
+    summary.value = s; task.value = t; regions.value = r; splits.value = sp
+  } catch (e) { error.value = e.message } finally { loading.value = false }
 })
-
-const pipelineSteps = [
-  { step: 1, label: 'ERA5-Land', desc: 'NetCDF climate reanalysis' },
-  { step: 2, label: 'Preprocessing', desc: 'xarray + anomaly calc' },
-  { step: 3, label: 'Features', desc: 'Physical predictors' },
-  { step: 4, label: 'ML Models', desc: 'LR, RF, XGB, LGBM, TCN' },
-  { step: 5, label: 'FastAPI', desc: 'REST API serving results' },
-  { step: 6, label: 'Dashboard', desc: 'Vue 3 interactive viz' },
-]
 </script>
 
 <template>
-  <div v-if="loading"><LoadingState message="Loading ClimateNet overview..." /></div>
+  <div v-if="loading"><LoadingState message="Loading benchmark overview..." /></div>
   <div v-else-if="error"><ErrorMessage :message="error" /></div>
   <div v-else class="space-y-6">
-    <!-- Hero -->
-    <div class="card p-6">
-      <h2 class="text-2xl font-bold text-gray-900">{{ project?.title || 'ClimateNet' }}</h2>
-      <p class="text-sm text-gray-500 mt-1">{{ project?.subtitle || '' }}</p>
-      <p class="text-sm text-gray-600 mt-3 leading-relaxed max-w-3xl">{{ project?.description || '' }}</p>
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900">EvapAnomaly-Forecast-v1</h1>
+      <p class="text-gray-500 mt-1">A reproducible spatio-temporal ML benchmark for next-month land evaporation anomaly forecasting</p>
     </div>
 
-    <!-- Dataset KPIs -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      <MetricCard label="Data Source" :value="dataset?.data_source || 'ERA5-Land'" />
-      <MetricCard label="Regions" :value="dataset?.regions?.length || 0" unit="regions" />
-      <MetricCard label="Target" :value="dataset?.target_variable || 'evaporation_anomaly'" />
-      <MetricCard label="Total Records" :value="dataset?.total_records?.toLocaleString() || '0'" unit="rows" />
+    <!-- Central Question -->
+    <div class="card p-5 bg-gradient-to-r from-blue-50 to-teal-50 border-blue-200">
+      <p class="text-sm font-semibold text-blue-900">Central Research Question</p>
+      <p class="text-lg text-blue-800 mt-1">Do ML models trained on climate data truly generalize across unseen grid cells, future years, and different climate regions?</p>
     </div>
 
-    <!-- Experiment KPIs -->
-    <div v-if="expSummary" class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      <MetricCard label="Experiments" :value="expSummary.total_experiments" />
-      <MetricCard label="Best R²" :value="expSummary.best_r2?.toFixed(3)" />
-      <MetricCard label="Best RMSE" :value="expSummary.best_rmse?.toFixed(3)" />
-      <MetricCard label="Best Model" :value="expSummary.best_model" />
+    <!-- KPIs -->
+    <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
+      <MetricCard label="Experiments" :value="summary.total_experiments" />
+      <MetricCard label="Models" :value="summary.n_models" />
+      <MetricCard label="Split Protocols" :value="summary.n_split_protocols" />
+      <MetricCard label="Best RMSE" :value="summary.best_rmse?.toFixed(3)" unit="evap anomaly" />
+      <MetricCard label="Best Model" :value="summary.best_model" />
     </div>
 
-    <!-- Models & Strategies -->
-    <div v-if="expSummary" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      <div class="card p-4">
-        <h4 class="text-sm font-semibold text-gray-700 mb-2">Models</h4>
-        <div class="flex flex-wrap gap-2">
-          <BadgeTag v-for="m in expSummary.models" :key="m" :text="m" :color="m === 'tcn' ? 'purple' : m === 'xgboost' ? 'teal' : 'blue'" />
-        </div>
-      </div>
-      <div class="card p-4">
-        <h4 class="text-sm font-semibold text-gray-700 mb-2">Validation Strategies</h4>
-        <div class="flex flex-wrap gap-2">
-          <BadgeTag v-for="s in expSummary.strategies" :key="s" :text="s" :color="s === 'region_transfer' ? 'amber' : s === 'temporal_holdout' ? 'purple' : 'cyan'" />
-        </div>
+    <!-- Task Definition -->
+    <div class="card p-5">
+      <h2 class="text-lg font-semibold text-gray-900 mb-3">Task Definition</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+        <div><span class="text-gray-400">Input</span><p class="font-medium">{{ task.input_window }}</p></div>
+        <div><span class="text-gray-400">Target</span><p class="font-medium">{{ task.target }}</p></div>
+        <div><span class="text-gray-400">Temporal Unit</span><p class="font-medium">{{ task.temporal_unit }}</p></div>
+        <div><span class="text-gray-400">Forecast Horizon</span><p class="font-medium">{{ task.forecast_horizon }}</p></div>
       </div>
     </div>
 
-    <!-- Pipeline Diagram -->
-    <div class="card p-6">
-      <h3 class="text-base font-semibold text-gray-900 mb-4">Pipeline</h3>
-      <div class="flex flex-wrap items-center gap-2">
-        <template v-for="(step, i) in pipelineSteps" :key="step.step">
-          <div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-50 border border-blue-100">
-            <span class="w-5 h-5 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center font-bold">{{ step.step }}</span>
-            <div>
-              <div class="text-xs font-semibold text-gray-800">{{ step.label }}</div>
-              <div class="text-[10px] text-gray-500">{{ step.desc }}</div>
-            </div>
-          </div>
-          <span v-if="i < pipelineSteps.length - 1" class="text-gray-300 font-bold text-lg">→</span>
-        </template>
+    <!-- Regions + Splits -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="card p-5">
+        <h2 class="text-lg font-semibold text-gray-900 mb-3">Benchmark Regions ({{ regions.length }})</h2>
+        <table class="data-table">
+          <thead><tr><th>Region</th><th>Climate</th><th>Bounds</th></tr></thead>
+          <tbody>
+            <tr v-for="r in regions" :key="r.name">
+              <td class="font-medium">{{ r.name }}</td>
+              <td><span class="badge badge-teal">{{ r.climate_type }}</span></td>
+              <td class="text-xs text-gray-500">lat {{ r.lat_min }}-{{ r.lat_max }}, lon {{ r.lon_min }}-{{ r.lon_max }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card p-5">
+        <h2 class="text-lg font-semibold text-gray-900 mb-3">Split Protocols ({{ splits.length }})</h2>
+        <ul class="space-y-2 text-sm">
+          <li v-for="s in splits" :key="s.split_id" class="flex items-start gap-2">
+            <span class="badge badge-blue mt-0.5">{{ s.protocol }}</span>
+            <span class="text-gray-600">{{ s.note?.substring(0, 80) }}...</span>
+          </li>
+        </ul>
       </div>
     </div>
 
-    <!-- Architecture -->
-    <div class="card p-6">
-      <h3 class="text-base font-semibold text-gray-900 mb-4">Architecture</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-        <div v-for="layer in project?.architecture_layers || []" :key="layer.layer" class="p-3 rounded-lg bg-gray-50 border border-gray-100">
-          <div class="text-xs font-semibold text-gray-800">{{ layer.layer }}</div>
-          <div class="text-[10px] text-gray-500 mt-1">{{ layer.description }}</div>
-          <div class="flex flex-wrap gap-1 mt-2">
-            <BadgeTag v-for="tech in (layer.technologies || [])" :key="tech" :text="tech" color="blue" />
-          </div>
-        </div>
+    <!-- Pipeline -->
+    <div class="card p-5">
+      <h2 class="text-lg font-semibold text-gray-900 mb-3">Benchmark Pipeline</h2>
+      <div class="flex flex-wrap gap-2 text-xs items-center">
+        <span class="badge badge-purple">1. ERA5-Land Data</span><span class="text-gray-300">→</span>
+        <span class="badge badge-purple">2. Feature Engineering</span><span class="text-gray-300">→</span>
+        <span class="badge badge-purple">3. Forecasting Dataset</span><span class="text-gray-300">→</span>
+        <span class="badge badge-purple">4. Split Protocols</span><span class="text-gray-300">→</span>
+        <span class="badge badge-purple">5. Model Training</span><span class="text-gray-300">→</span>
+        <span class="badge badge-purple">6. Evaluation</span><span class="text-gray-300">→</span>
+        <span class="badge badge-cyan">7. Leaderboard</span>
       </div>
     </div>
   </div>

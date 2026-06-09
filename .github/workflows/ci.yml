@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+          pip install lightgbm
+
+      - name: Run tests
+        run: |
+          python -m pytest tests/ -v --tb=short
+
+      - name: Smoke test benchmark
+        run: |
+          python scripts/build_forecasting_dataset.py --synthetic
+          python scripts/run_benchmark.py --config configs/benchmark/smoke_test.yaml --output-dir outputs/benchmark
+          python scripts/build_leaderboard.py --experiments-dir outputs/benchmark/experiments --output-dir outputs/benchmark
+          python -c "
+          import pandas as pd
+          lb = pd.read_csv('outputs/benchmark/leaderboard.csv')
+          assert len(lb) > 0, 'Leaderboard is empty'
+          assert 'rmse' in lb.columns
+          assert 'model_name' in lb.columns
+          print(f'CI smoke test passed: {len(lb)} leaderboard rows')
+          "

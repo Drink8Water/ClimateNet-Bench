@@ -1,0 +1,20 @@
+# Spatial-temporal holdout (strictest protocol).
+# ==============================================
+# Joint spatial-block holdout + temporal holdout.
+# Test = held-out spatial blocks × held-out future year.
+#
+# Tests: Can the model generalize to unseen locations in an
+# unseen future year?  This is the hardest generalization test.
+
+protocol: spatiotemporal
+split_id: spatiotemporal
+block_size_deg: 5.0
+train_years: [2019, 2020, 2021]
+test_year: 2023
+val_ratio: 0.15
+seed: 42
+
+note: >
+  Both spatial AND temporal constraints hold simultaneously.
+  Test samples come from blocks never seen during training
+  AND from a year never seen during training.
