@@ -1,0 +1,26 @@
+models:
+  linear_regression:
+    enabled: true
+  random_forest:
+    enabled: true
+    params:
+      n_estimators: 250
+      min_samples_leaf: 3
+      n_jobs: -1
+  xgboost:
+    enabled: true
+    params:
+      n_estimators: 300
+      learning_rate: 0.05
+      max_depth: 4
+      subsample: 0.9
+      colsample_bytree: 0.9
+      objective: reg:squarederror
+      n_jobs: 1
+  lightgbm:
+    enabled: true
+    skip_if_missing: true
+    params:
+      n_estimators: 300
+      learning_rate: 0.05
+      verbose: -1

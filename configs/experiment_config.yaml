@@ -1,0 +1,81 @@
+experiment_id: synthetic_phase3_baseline
+seed: 42
+output_root: outputs/experiments
+features_path: data/processed/features.csv
+target_column: evaporation_anomaly
+save_plots: true
+test_size: 0.2
+train_start_year: 2010
+train_end_year: 2019
+test_year: 2020
+validation_strategies:
+  - random_split
+  - spatial_holdout
+  - temporal_holdout
+  - region_transfer
+region_transfer_pairs:
+  - train_region: Sahara
+    test_region: East China
+  - train_region: East China
+    test_region: Sahara
+batch_models:
+  - linear_regression
+  - random_forest
+  - xgboost
+  # TCN is supported for temporal_holdout. Enable when you want the deeper model in the batch.
+  # - tcn
+feature_sets:
+  base:
+    - latitude
+    - longitude
+    - month_sin
+    - month_cos
+  meteorological:
+    - temperature_anomaly
+    - precipitation_anomaly
+    - radiation_anomaly
+    - soil_moisture_anomaly
+    - wind_speed
+  physical:
+    - dryness_proxy
+    - saturation_vapor_pressure
+  full:
+    - latitude
+    - longitude
+    - month_sin
+    - month_cos
+    - temperature_anomaly
+    - precipitation_anomaly
+    - radiation_anomaly
+    - soil_moisture_anomaly
+    - wind_speed
+    - dryness_proxy
+    - saturation_vapor_pressure
+tcn:
+  sequence_length: 6
+  epochs: 10
+  batch_size: 128
+  learning_rate: 0.001
+  channels:
+    - 32
+    - 32
+    - 32
+  dropout: 0.2
+model_features:
+  - latitude
+  - longitude
+  - temperature
+  - precipitation
+  - radiation
+  - soil_moisture
+  - u_wind
+  - v_wind
+  - wind_speed
+  - month_sin
+  - month_cos
+  - temperature_anomaly
+  - precipitation_anomaly
+  - radiation_anomaly
+  - soil_moisture_anomaly
+  - dryness_proxy
+  - saturation_vapor_pressure

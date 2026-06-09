@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "climatenet"
+version = "0.1.0"
+description = "Domain-informed spatio-temporal ML system for land evaporation anomaly modeling"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["src"]

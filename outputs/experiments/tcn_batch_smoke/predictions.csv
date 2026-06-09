@@ -1,0 +1,721 @@
+region,year,month,latitude,longitude,actual,prediction,validation_strategy,train_region,test_region,train_period,test_period,feature_set,model,model_name
+East China,2020,1,24.7768,118.9669,1.1494576,-0.07715867,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,24.7768,118.9669,-0.2589697,-0.036614083,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,24.7768,118.9669,1.8478698,-0.016398795,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,24.7768,118.9669,-1.9971818,-0.0012859926,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,24.7768,118.9669,0.33847877,0.0456909,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,24.7768,118.9669,-0.43107274,0.12606585,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,24.7768,118.9669,-0.70540303,0.14002892,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,24.7768,118.9669,-0.6607424,0.089322664,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,24.7768,118.9669,0.42816365,-0.02136638,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,24.7768,118.9669,-2.9701152,-0.08046352,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,24.7768,118.9669,-1.0056849,-0.1173882,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,24.7768,118.9669,0.010839394,-0.10458306,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,25.2688,120.0925,-0.4465424,-0.05610598,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,25.2688,120.0925,-2.1419697,-0.025737904,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,25.2688,120.0925,-0.9451303,-0.020655856,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,25.2688,120.0925,-1.8751818,-0.015688486,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,25.2688,120.0925,0.71147877,0.040834494,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,25.2688,120.0925,0.64492726,0.12121145,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,25.2688,120.0925,0.19659697,0.14281103,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,25.2688,120.0925,0.103257574,0.09623238,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,25.2688,120.0925,1.2751637,-0.009561658,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,25.2688,120.0925,1.0938848,-0.069552146,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,25.2688,120.0925,0.53731513,-0.10015466,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,25.2688,120.0925,0.8898394,-0.09510333,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,25.7873,113.3223,2.4554577,-0.022079505,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,25.7873,113.3223,-0.021969697,-0.018353835,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,25.7873,113.3223,1.5268697,-0.031686418,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,25.7873,113.3223,-0.49618182,-0.041245677,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,25.7873,113.3223,-1.1195213,0.024172612,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,25.7873,113.3223,0.083927274,0.116173334,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,25.7873,113.3223,1.040597,0.14042637,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,25.7873,113.3223,-1.1777425,0.09807918,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,25.7873,113.3223,1.1701636,0.0038218424,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,25.7873,113.3223,-2.0941153,-0.058409043,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,25.7873,113.3223,0.38531515,-0.078068726,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,25.7873,113.3223,0.2638394,-0.06430756,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,25.9356,113.134,-1.5795424,-0.014947318,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,25.9356,113.134,1.0060303,-0.015082918,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,25.9356,113.134,0.6258697,-0.032860704,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,25.9356,113.134,0.07281818,-0.045295853,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,25.9356,113.134,0.2304788,0.021742888,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,25.9356,113.134,-0.8020727,0.11454397,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,25.9356,113.134,1.702597,0.14039811,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,25.9356,113.134,0.73625755,0.0951506,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,25.9356,113.134,-1.2128364,0.0067260787,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,25.9356,113.134,-0.04311515,-0.05484713,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,25.9356,113.134,0.35931516,-0.07228432,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,25.9356,113.134,0.7378394,-0.058861233,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,26.0545,112.0598,1.3894576,-0.008251004,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,26.0545,112.0598,3.4650302,-0.011788689,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,26.0545,112.0598,1.3968697,-0.034909926,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,26.0545,112.0598,-1.7751818,-0.049561597,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,26.0545,112.0598,-4.219521,0.018888034,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,26.0545,112.0598,-0.43007272,0.113144405,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,26.0545,112.0598,2.563597,0.13938892,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,26.0545,112.0598,0.9692576,0.09229747,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,26.0545,112.0598,0.7271636,0.00945466,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,26.0545,112.0598,-1.3291152,-0.051799305,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,26.0545,112.0598,1.7223152,-0.066586904,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,26.0545,112.0598,0.1478394,-0.05306109,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,26.5147,112.9427,-0.023542425,0.008205317,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,26.5147,112.9427,0.9600303,-0.00052236766,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,26.5147,112.9427,-0.8931303,-0.036086254,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,26.5147,112.9427,-0.8231818,-0.05693053,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,26.5147,112.9427,0.9444788,0.013757788,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,26.5147,112.9427,-4.1560726,0.107658304,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,26.5147,112.9427,-0.82840306,0.13607699,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,26.5147,112.9427,-1.5507424,0.083423115,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,26.5147,112.9427,0.49116364,0.01821538,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,26.5147,112.9427,-1.8081151,-0.041755952,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,26.5147,112.9427,0.21531515,-0.049562223,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,26.5147,112.9427,-0.7201606,-0.041403346,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,26.7869,113.2453,-1.0105424,0.016291253,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,26.7869,113.2453,0.2630303,0.003984034,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,26.7869,113.2453,1.7738698,-0.038228884,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,26.7869,113.2453,1.4528182,-0.061479162,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,26.7869,113.2453,-0.03852121,0.01048132,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,26.7869,113.2453,-0.0010727273,0.10382105,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,26.7869,113.2453,-1.8604031,0.13406476,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,26.7869,113.2453,-2.9557424,0.07873959,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,26.7869,113.2453,-0.5418364,0.023105212,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,26.7869,113.2453,2.051885,-0.03588789,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,26.7869,113.2453,0.9923152,-0.038466014,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,26.7869,113.2453,2.2788393,-0.032453217,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,26.8609,115.9036,1.0684576,0.017257817,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,26.8609,115.9036,-2.4239697,0.0006153658,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,26.8609,115.9036,0.7198697,-0.03549271,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,26.8609,115.9036,-0.76918185,-0.058320384,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,26.8609,115.9036,2.827479,0.013399385,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,26.8609,115.9036,0.13092728,0.10447193,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,26.8609,115.9036,2.7785969,0.13301641,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,26.8609,115.9036,1.5822576,0.0801262,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,26.8609,115.9036,-0.36583635,0.023034029,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,26.8609,115.9036,2.5688848,-0.033736266,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,26.8609,115.9036,0.71631515,-0.037580304,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,26.8609,115.9036,0.7138394,-0.034488745,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,27.1308,116.6907,-2.0535424,0.024822138,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,27.1308,116.6907,3.2850304,0.004842192,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,27.1308,116.6907,-0.9051303,-0.037909888,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,27.1308,116.6907,-0.44218183,-0.062134854,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,27.1308,116.6907,-0.067521214,0.012139574,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,27.1308,116.6907,-2.5510728,0.10024337,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,27.1308,116.6907,0.43959698,0.12781775,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,27.1308,116.6907,1.0032576,0.08037474,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,27.1308,116.6907,-1.4868363,0.028169475,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,27.1308,116.6907,-1.0151151,-0.02546937,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,27.1308,116.6907,0.50431514,-0.027162068,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,27.1308,116.6907,-0.2971606,-0.027184911,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,27.2886,116.5561,0.124457575,0.02951514,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,27.2886,116.5561,0.1640303,0.0074064806,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,27.2886,116.5561,2.6138697,-0.0405282,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,27.2886,116.5561,1.8618182,-0.065115094,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,27.2886,116.5561,-0.22252122,0.010275036,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,27.2886,116.5561,1.0759273,0.09690624,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,27.2886,116.5561,-0.72840303,0.124048,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,27.2886,116.5561,1.5862576,0.07945355,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,27.2886,116.5561,-1.2728363,0.031507827,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,27.2886,116.5561,-1.8271152,-0.020259917,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,27.2886,116.5561,0.71531516,-0.02230025,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,27.2886,116.5561,0.058839396,-0.021461599,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,28.9347,121.7479,-1.6905425,0.05680073,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,28.9347,121.7479,-0.6859697,0.02055315,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,28.9347,121.7479,0.4588697,-0.04565933,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,28.9347,121.7479,3.5018182,-0.06152257,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,28.9347,121.7479,-1.8625212,-0.0023046061,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,28.9347,121.7479,1.6359273,0.076439895,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,28.9347,121.7479,0.84259695,0.091023155,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,28.9347,121.7479,0.91225755,0.07609441,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,28.9347,121.7479,-2.8518364,0.06797331,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,28.9347,121.7479,-1.2171152,0.037890248,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,28.9347,121.7479,0.13931516,0.019056432,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,28.9347,121.7479,0.50883937,0.0057586804,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,29.5229,111.5627,-2.1455424,0.07877668,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,29.5229,111.5627,-2.3059697,0.024417825,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,29.5229,111.5627,0.9178697,-0.06492671,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,29.5229,111.5627,-2.0861819,-0.081053734,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,29.5229,111.5627,2.9594789,-0.021419927,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,29.5229,111.5627,-1.7140727,0.046549194,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,29.5229,111.5627,0.87559694,0.07010377,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,29.5229,111.5627,0.49325758,0.05585978,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,29.5229,111.5627,-0.34883636,0.09096869,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,29.5229,111.5627,2.636885,0.03600373,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,29.5229,111.5627,-2.1706848,0.026705153,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,29.5229,111.5627,-0.4741606,0.018588983,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,29.6716,117.2385,1.0024576,0.07379802,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,29.6716,117.2385,1.9510303,0.027029581,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,29.6716,117.2385,0.8098697,-0.056999125,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,29.6716,117.2385,-0.9981818,-0.07356119,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,29.6716,117.2385,2.7494788,-0.013574146,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,29.6716,117.2385,0.18192728,0.055245332,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,29.6716,117.2385,1.288597,0.07060302,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,29.6716,117.2385,-0.26774243,0.060558535,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,29.6716,117.2385,0.035163637,0.08925805,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,29.6716,117.2385,2.2338848,0.04223437,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,29.6716,117.2385,0.7923151,0.032088257,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,29.6716,117.2385,-0.35116062,0.018413283,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,30.2393,115.1033,-2.1955423,0.078187115,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,30.2393,115.1033,2.0590303,0.029555567,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,30.2393,115.1033,1.2608697,-0.059946273,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,30.2393,115.1033,-0.38618183,-0.07759927,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,30.2393,115.1033,-2.3425212,-0.019279808,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,30.2393,115.1033,1.0579273,0.033683427,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,30.2393,115.1033,-3.123403,0.054202996,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,30.2393,115.1033,-1.0827425,0.048353247,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,30.2393,115.1033,-1.5158364,0.088996984,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,30.2393,115.1033,0.51888484,0.04477545,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,30.2393,115.1033,-0.17768484,0.038053893,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,30.2393,115.1033,0.2268394,0.02403342,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,30.6141,112.8766,-0.26954243,0.08321411,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,30.6141,112.8766,-1.1629697,0.030754246,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,30.6141,112.8766,1.2658697,-0.058731504,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,30.6141,112.8766,-1.6821818,-0.081689954,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,30.6141,112.8766,-0.14252122,-0.024182051,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,30.6141,112.8766,0.008927273,0.01862643,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,30.6141,112.8766,-0.48040304,0.043971695,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,30.6141,112.8766,0.41225758,0.039248846,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,30.6141,112.8766,1.0801636,0.08727112,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,30.6141,112.8766,0.10888485,0.045499958,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,30.6141,112.8766,-0.23668484,0.04048466,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,30.6141,112.8766,-1.7211607,0.02803529,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,30.7182,120.9022,-0.111542426,0.07545843,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,30.7182,120.9022,1.2110302,0.036241896,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,30.7182,120.9022,-0.53913033,-0.044928245,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,30.7182,120.9022,-1.6431818,-0.062800586,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,30.7182,120.9022,1.7244788,-0.012133218,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,30.7182,120.9022,-1.7880727,0.024612553,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,30.7182,120.9022,0.02459697,0.046980135,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,30.7182,120.9022,0.49125758,0.048297934,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,30.7182,120.9022,-2.1798363,0.085966446,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,30.7182,120.9022,0.30188486,0.05611608,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,30.7182,120.9022,-1.7346848,0.044423647,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,30.7182,120.9022,-3.0201607,0.025839604,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,30.759,112.0,1.3824576,0.082123466,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,30.759,112.0,-2.0539696,0.03181862,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,30.759,112.0,0.0448697,-0.058315296,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,30.759,112.0,0.42381817,-0.08381295,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,30.759,112.0,2.6494787,-0.026673459,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,30.759,112.0,0.6889273,0.012617283,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,30.759,112.0,0.826597,0.040232874,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,30.759,112.0,-1.1337425,0.035612382,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,30.759,112.0,-1.4668363,0.08373705,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,30.759,112.0,1.5528848,0.045534395,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,30.759,112.0,-0.62668484,0.04027147,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,30.759,112.0,1.5388393,0.02952949,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,31.1593,116.6281,0.31545758,0.07396079,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,31.1593,116.6281,-0.8119697,0.03567455,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,31.1593,116.6281,-0.26713032,-0.04765442,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,31.1593,116.6281,0.12981819,-0.07503449,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,31.1593,116.6281,1.5094788,-0.02224847,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,31.1593,116.6281,0.52892727,0.0048701093,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,31.1593,116.6281,-3.1554031,0.0352296,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,31.1593,116.6281,0.7932576,0.03295166,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,31.1593,116.6281,2.1261637,0.07772533,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,31.1593,116.6281,0.80488485,0.053576,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,31.1593,116.6281,-1.2926848,0.042963184,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,31.1593,116.6281,0.23083939,0.031317793,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,31.3645,119.8554,-0.72954243,0.07046651,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,31.3645,119.8554,-0.8919697,0.04143826,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,31.3645,119.8554,0.041869696,-0.040082328,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,31.3645,119.8554,-0.6251818,-0.0663873,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,31.3645,119.8554,-2.3235211,-0.018479258,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,31.3645,119.8554,-2.0960727,0.0022339076,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,31.3645,119.8554,0.35459697,0.033719726,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,31.3645,119.8554,-1.2497424,0.03226628,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,31.3645,119.8554,-2.0118363,0.072844826,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,31.3645,119.8554,0.26488486,0.06079892,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,31.3645,119.8554,-0.96468484,0.0445754,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,31.3645,119.8554,-0.8971606,0.031674333,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,32.2875,110.2489,1.1374576,0.05931527,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,32.2875,110.2489,1.2240303,0.047128193,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,32.2875,110.2489,-0.8451303,-0.04005239,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,32.2875,110.2489,1.4558182,-0.08463901,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,32.2875,110.2489,0.7334788,-0.040673412,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,32.2875,110.2489,-0.8100727,-0.040708244,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,32.2875,110.2489,-2.604403,0.005843267,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,32.2875,110.2489,-0.45074242,0.007183984,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,32.2875,110.2489,2.5551636,0.045546286,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,32.2875,110.2489,1.5868849,0.053395353,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,32.2875,110.2489,-0.62068486,0.035317995,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,32.2875,110.2489,0.3328394,0.041289784,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,32.4482,118.6087,0.08245757,0.05489693,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,32.4482,118.6087,-1.2309697,0.048298784,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,32.4482,118.6087,-1.3211303,-0.024461828,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,32.4482,118.6087,1.5008181,-0.0655044,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,32.4482,118.6087,-1.3375212,-0.030507661,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,32.4482,118.6087,1.2779273,-0.0315362,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,32.4482,118.6087,-0.38240302,0.013566263,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,32.4482,118.6087,-0.6977424,0.0107000545,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,32.4482,118.6087,-0.67483634,0.048957624,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,32.4482,118.6087,-0.16911516,0.06499607,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,32.4482,118.6087,1.4233152,0.045054056,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,32.4482,118.6087,0.78683937,0.04045222,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,32.883,120.8923,0.0014575757,0.050761588,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,32.883,120.8923,-1.4759697,0.045872472,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,32.883,120.8923,0.90086967,-0.013029568,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,32.883,120.8923,-1.6571819,-0.05448268,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,32.883,120.8923,-0.21152121,-0.033056647,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,32.883,120.8923,0.74292725,-0.040826865,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,32.883,120.8923,0.553597,0.003298767,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,32.883,120.8923,-1.9147425,0.007897638,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,32.883,120.8923,1.6241636,0.045930676,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,32.883,120.8923,-1.4711151,0.062672384,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,32.883,120.8923,-0.40568486,0.052206255,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,32.883,120.8923,0.7928394,0.04295925,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,33.2275,118.1302,-0.37154242,0.04335668,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,33.2275,118.1302,-1.0249697,0.042097993,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,33.2275,118.1302,0.6888697,-0.0097228885,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,33.2275,118.1302,-0.8741818,-0.055794574,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,33.2275,118.1302,-0.3525212,-0.043023393,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,33.2275,118.1302,-0.012072727,-0.05538892,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,33.2275,118.1302,1.821597,-0.011384048,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,33.2275,118.1302,0.8502576,0.002217926,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,33.2275,118.1302,3.1421638,0.03246864,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,33.2275,118.1302,-3.1781151,0.051748656,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,33.2275,118.1302,1.1943152,0.048126988,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,33.2275,118.1302,-0.1671606,0.043484993,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,33.3205,115.5461,0.23045757,0.038719438,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,33.3205,115.5461,0.3290303,0.040872626,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,33.3205,115.5461,0.056869697,-0.012254305,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,33.3205,115.5461,0.34181818,-0.058029585,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,33.3205,115.5461,-0.9535212,-0.045867335,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,33.3205,115.5461,0.23292728,-0.06131779,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,33.3205,115.5461,-1.101403,-0.016955204,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,33.3205,115.5461,0.30025756,-0.0010199472,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,33.3205,115.5461,-2.7688363,0.02630683,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,33.3205,115.5461,-0.97711515,0.044756614,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,33.3205,115.5461,1.4323151,0.04234437,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,33.3205,115.5461,-2.3311605,0.043102063,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,33.4834,121.8485,1.3414576,0.042802744,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,33.4834,121.8485,-0.1299697,0.041748963,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,33.4834,121.8485,-0.9561303,0.001819633,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,33.4834,121.8485,1.2838181,-0.045026194,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,33.4834,121.8485,-0.3905212,-0.04881051,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,33.4834,121.8485,2.1109273,-0.057496633,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,33.4834,121.8485,0.593597,-0.014034174,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,33.4834,121.8485,-0.6457424,0.0037194043,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,33.4834,121.8485,-0.9768364,0.037312485,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,33.4834,121.8485,-0.87411517,0.053151883,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,33.4834,121.8485,-0.27468485,0.05681526,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,33.4834,121.8485,2.6378393,0.042137392,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,33.6604,111.2578,-1.7335424,0.029204719,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,33.6604,111.2578,1.8510303,0.03728143,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,33.6604,111.2578,-0.0791303,-0.012273617,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,33.6604,111.2578,0.8568182,-0.058941998,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,33.6604,111.2578,1.4034787,-0.055568308,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,33.6604,111.2578,0.46892726,-0.077148005,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,33.6604,111.2578,-0.57540303,-0.031849526,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,33.6604,111.2578,-1.7917424,-0.014580645,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,33.6604,111.2578,1.0771636,0.012401603,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,33.6604,111.2578,-1.0461152,0.030028768,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,33.6604,111.2578,-0.53368485,0.0324874,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,33.6604,111.2578,-0.041160606,0.03608937,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,34.5007,114.3832,-1.4135424,0.012850158,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,34.5007,114.3832,0.8840303,0.030496664,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,34.5007,114.3832,3.3718698,0.0044497624,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,34.5007,114.3832,0.5528182,-0.041302674,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,34.5007,114.3832,0.16047879,-0.06606242,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,34.5007,114.3832,0.72892725,-0.09346682,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,34.5007,114.3832,1.520597,-0.045343675,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,34.5007,114.3832,-1.4267424,-0.030791499,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,34.5007,114.3832,-0.31083637,-0.0024117976,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,34.5007,114.3832,-0.48011515,0.014957763,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,34.5007,114.3832,2.2733152,0.031751834,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,34.5007,114.3832,-0.30016062,0.017362438,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,34.8698,113.4503,0.7824576,0.0034703314,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,34.8698,113.4503,0.6120303,0.026509218,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,34.8698,113.4503,1.1608697,-0.0008876249,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,34.8698,113.4503,-0.25418183,-0.038846284,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,34.8698,113.4503,-2.7685213,-0.068982214,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,34.8698,113.4503,1.1739273,-0.09765313,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,34.8698,113.4503,-0.19840303,-0.051116936,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,34.8698,113.4503,1.5272576,-0.043083295,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,34.8698,113.4503,-0.33883637,-0.014121018,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,34.8698,113.4503,0.78588486,0.0031655058,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,34.8698,113.4503,-0.65768486,0.019531347,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,34.8698,113.4503,-0.5431606,0.007445216,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,34.8803,111.3308,0.9174576,0.00044605136,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,34.8803,111.3308,-0.5399697,0.025327154,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,34.8803,111.3308,-1.1711303,-0.0037767664,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,34.8803,111.3308,-0.9251818,-0.040725008,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,34.8803,111.3308,-1.6085212,-0.06842064,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,34.8803,111.3308,1.5779272,-0.09942555,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,34.8803,111.3308,0.59659696,-0.05373981,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,34.8803,111.3308,0.027257577,-0.047126982,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,34.8803,111.3308,2.4731636,-0.021171443,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,34.8803,111.3308,1.9618849,-0.0028950348,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,34.8803,111.3308,-2.2836847,0.013274156,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,34.8803,111.3308,0.018839395,0.0047687367,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,1,35.7698,121.6708,-0.019542424,-0.005864322,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,2,35.7698,121.6708,0.2000303,0.01915335,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,3,35.7698,121.6708,2.6558697,0.0008845404,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,4,35.7698,121.6708,1.3788182,-0.031089284,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,5,35.7698,121.6708,0.6824788,-0.07649279,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,6,35.7698,121.6708,-1.4920727,-0.09827082,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,7,35.7698,121.6708,1.6365969,-0.05397001,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,8,35.7698,121.6708,3.0762575,-0.055346563,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,9,35.7698,121.6708,0.07116364,-0.011273123,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,10,35.7698,121.6708,-0.56211513,0.003734544,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,11,35.7698,121.6708,0.35931516,0.016474195,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+East China,2020,12,35.7698,121.6708,-0.5261606,0.0048182756,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,18.5256,10.5934,1.8207728,-0.12916908,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,18.5256,10.5934,0.41152123,-0.084336095,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,18.5256,10.5934,-1.3943212,0.013289787,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,18.5256,10.5934,-0.06935152,0.011439018,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,18.5256,10.5934,0.37662122,-0.019997232,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,18.5256,10.5934,-0.7325303,-0.054715123,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,18.5256,10.5934,-0.8405788,-0.049927227,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,18.5256,10.5934,0.58251214,-0.061976947,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,18.5256,10.5934,-1.0524939,-0.077248834,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,18.5256,10.5934,-0.34329697,-0.11548295,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,18.5256,10.5934,-3.3880334,-0.12966576,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,18.5256,10.5934,-2.750788,-0.14799944,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,18.7658,-2.0252,0.80477273,-0.098123334,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,18.7658,-2.0252,0.17652121,-0.054488294,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,18.7658,-2.0252,-1.7133212,0.026147671,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,18.7658,-2.0252,-1.4993515,0.009798132,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,18.7658,-2.0252,-0.9433788,-0.025141433,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,18.7658,-2.0252,1.2974697,-0.06055498,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,18.7658,-2.0252,1.9544212,-0.066443145,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,18.7658,-2.0252,-0.8794879,-0.07157611,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,18.7658,-2.0252,-1.336494,-0.07557341,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,18.7658,-2.0252,-2.167297,-0.08571514,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,18.7658,-2.0252,1.5819666,-0.10826897,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,18.7658,-2.0252,0.72221214,-0.11703121,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,19.1301,6.13,1.5197728,-0.10798132,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,19.1301,6.13,1.6385212,-0.06336721,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,19.1301,6.13,-0.7823212,0.025438868,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,19.1301,6.13,0.4206485,0.010420419,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,19.1301,6.13,-0.6163788,-0.01800546,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,19.1301,6.13,-2.5025303,-0.05313378,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,19.1301,6.13,0.7794212,-0.046610065,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,19.1301,6.13,-0.7864879,-0.05205717,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,19.1301,6.13,-1.2124939,-0.063688375,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,19.1301,6.13,-1.379297,-0.08669012,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,19.1301,6.13,-1.5660334,-0.10209968,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,19.1301,6.13,1.2182121,-0.11796828,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,19.5374,-4.7891,0.08177273,-0.07914438,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,19.5374,-4.7891,0.2245212,-0.030819558,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,19.5374,-4.7891,-2.096321,0.034134872,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,19.5374,-4.7891,-3.0703516,0.011942469,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,19.5374,-4.7891,-0.8363788,-0.016955964,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,19.5374,-4.7891,2.8324697,-0.052250326,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,19.5374,-4.7891,-0.92157876,-0.055821285,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,19.5374,-4.7891,1.0095121,-0.0579601,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,19.5374,-4.7891,0.35750607,-0.054997228,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,19.5374,-4.7891,-0.07629697,-0.056644313,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,19.5374,-4.7891,-0.58603334,-0.08725383,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,19.5374,-4.7891,1.1422122,-0.08948242,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,19.8515,-8.7091,-0.5722273,-0.065412216,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,19.8515,-8.7091,-1.2254788,-0.014445446,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,19.8515,-8.7091,-0.73432124,0.035790093,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,19.8515,-8.7091,1.9286485,0.00968834,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,19.8515,-8.7091,0.08762121,-0.014616713,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,19.8515,-8.7091,-0.2805303,-0.048302975,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,19.8515,-8.7091,-1.0445788,-0.05606804,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,19.8515,-8.7091,-1.9274879,-0.05645918,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,19.8515,-8.7091,2.894506,-0.046441726,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,19.8515,-8.7091,1.4797031,-0.04663109,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,19.8515,-8.7091,-0.31603333,-0.07776561,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,19.8515,-8.7091,-2.0727878,-0.0785779,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,20.3357,20.1328,-0.51122725,-0.11754491,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,20.3357,20.1328,2.0865211,-0.06581377,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,20.3357,20.1328,-2.1183212,0.023461811,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,20.3357,20.1328,1.3406485,0.017902873,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,20.3357,20.1328,-1.0083787,-0.0023988858,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,20.3357,20.1328,0.6664697,-0.021195374,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,20.3357,20.1328,0.38542122,-0.0008512661,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,20.3357,20.1328,-0.23248787,-0.024954028,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,20.3357,20.1328,0.16050605,-0.036316596,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,20.3357,20.1328,-0.02529697,-0.07205089,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,20.3357,20.1328,-0.35403332,-0.08118852,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,20.3357,20.1328,-0.8597879,-0.103276454,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,20.7269,21.2144,0.37977272,-0.11310216,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,20.7269,21.2144,-0.7684788,-0.059618153,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,20.7269,21.2144,0.66867876,0.024649002,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,20.7269,21.2144,0.4946485,0.017761655,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,20.7269,21.2144,2.1196213,-9.6447766e-05,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,20.7269,21.2144,-1.6795303,-0.011865951,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,20.7269,21.2144,-1.5175788,0.004930541,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,20.7269,21.2144,1.1015121,-0.019352347,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,20.7269,21.2144,-1.2434939,-0.027420394,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,20.7269,21.2144,-0.99629694,-0.06491958,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,20.7269,21.2144,2.8899667,-0.07313775,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,20.7269,21.2144,-0.5497879,-0.09352624,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,22.2543,-14.6687,1.3407727,0.022529937,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,22.2543,-14.6687,-0.89747876,0.034294255,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,22.2543,-14.6687,-0.018321212,0.020743541,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,22.2543,-14.6687,-2.3523514,-0.012423143,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,22.2543,-14.6687,0.34362122,-0.032646857,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,22.2543,-14.6687,-0.9615303,-0.018725835,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,22.2543,-14.6687,0.4974212,-0.01596719,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,22.2543,-14.6687,-0.16148788,-0.01858779,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,22.2543,-14.6687,2.068506,-0.0017524883,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,22.2543,-14.6687,-1.723297,-0.029925637,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,22.2543,-14.6687,0.50196666,-0.02159258,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,22.2543,-14.6687,2.3982122,-0.008246414,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,22.4496,4.6718,0.3967727,-0.02012425,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,22.4496,4.6718,1.6285212,0.010395922,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,22.4496,4.6718,0.5726788,0.015484288,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,22.4496,4.6718,-1.8513515,-0.012753107,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,22.4496,4.6718,-0.7623788,-0.025383301,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,22.4496,4.6718,-2.4395304,0.0042535886,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,22.4496,4.6718,0.6914212,0.014597438,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,22.4496,4.6718,1.0655122,-0.00567358,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,22.4496,4.6718,-1.5804939,0.011669137,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,22.4496,4.6718,1.702703,-0.018007152,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,22.4496,4.6718,-0.027033333,-0.026015572,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,22.4496,4.6718,-0.24678788,-0.028201543,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,23.2665,28.5379,-0.5312273,-0.044220336,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,23.2665,28.5379,0.08452121,-0.00035391748,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,23.2665,28.5379,0.9616788,0.002961889,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,23.2665,28.5379,-0.37935153,-0.006445147,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,23.2665,28.5379,-0.14537878,-0.018286556,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,23.2665,28.5379,0.9454697,0.021724187,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,23.2665,28.5379,0.9784212,0.04781831,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,23.2665,28.5379,1.0795121,0.021278687,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,23.2665,28.5379,-2.293494,0.039755575,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,23.2665,28.5379,-0.93129694,-0.0062525794,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,23.2665,28.5379,-1.2880334,-0.030359946,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,23.2665,28.5379,-1.5897878,-0.031623445,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,23.321,22.4517,2.0047727,-0.028722785,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,23.321,22.4517,-0.4044788,0.007071659,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,23.321,22.4517,0.37767878,0.0023654476,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,23.321,22.4517,0.8296485,-0.011013292,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,23.321,22.4517,0.48962122,-0.027075246,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,23.321,22.4517,-0.8745303,0.015667193,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,23.321,22.4517,0.5744212,0.042884983,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,23.321,22.4517,0.45151213,0.020246185,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,23.321,22.4517,0.23650606,0.038235612,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,23.321,22.4517,-1.447297,-0.0068027005,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,23.321,22.4517,1.1379666,-0.021014296,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,23.321,22.4517,1.8152121,-0.025460713,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,23.4046,15.1416,-0.59022725,-0.010174982,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,23.4046,15.1416,-1.4324788,0.01701092,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,23.4046,15.1416,1.0636787,0.002789639,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,23.4046,15.1416,0.7316485,-0.016344488,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,23.4046,15.1416,1.0956212,-0.038173854,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,23.4046,15.1416,-0.88253033,0.010282777,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,23.4046,15.1416,1.5044212,0.03918933,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,23.4046,15.1416,-0.7474879,0.017206095,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,23.4046,15.1416,-0.45749393,0.030359231,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,23.4046,15.1416,-3.007297,-0.0047898665,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,23.4046,15.1416,-0.39603335,-0.010187678,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,23.4046,15.1416,0.6792121,-0.017423086,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,23.6007,5.6512,-1.0562273,0.017048962,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,23.6007,5.6512,-0.11347879,0.02786126,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,23.6007,5.6512,1.0226787,0.00301411,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,23.6007,5.6512,-0.4433515,-0.029689819,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,23.6007,5.6512,-1.5053788,-0.045750573,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,23.6007,5.6512,0.0654697,0.003037326,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,23.6007,5.6512,-1.9325788,0.03583119,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,23.6007,5.6512,1.6135122,0.014173411,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,23.6007,5.6512,0.63750607,0.025363274,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,23.6007,5.6512,-0.37229696,-0.004613869,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,23.6007,5.6512,-0.57303333,0.0064990297,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,23.6007,5.6512,-0.19378787,-0.0031455085,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,24.655,2.4365,-2.9632273,0.04514333,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,24.655,2.4365,-0.14547879,0.042770006,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,24.655,2.4365,-0.4293212,-0.002705142,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,24.655,2.4365,-2.1003516,-0.04743289,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,24.655,2.4365,1.5816212,-0.055589065,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,24.655,2.4365,0.007469697,-0.010517962,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,24.655,2.4365,0.0014212121,0.045745797,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,24.655,2.4365,-0.37648788,0.028208353,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,24.655,2.4365,1.6595061,0.016630672,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,24.655,2.4365,-0.38929698,0.012733467,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,24.655,2.4365,1.2599666,0.041948535,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,24.655,2.4365,0.6302121,0.022312231,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,25.58,-8.7111,0.31777272,0.04211078,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,25.58,-8.7111,1.2135212,0.06109751,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,25.58,-8.7111,0.021678789,0.006115027,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,25.58,-8.7111,-0.19935152,-0.054026723,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,25.58,-8.7111,1.3676212,-0.05495632,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,25.58,-8.7111,0.3174697,-0.023457386,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,25.58,-8.7111,-0.90757877,0.042572267,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,25.58,-8.7111,-0.2924879,0.034871526,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,25.58,-8.7111,-1.833494,-0.011801265,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,25.58,-8.7111,-0.40829697,0.016338818,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,25.58,-8.7111,-0.26903334,0.066931315,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,25.58,-8.7111,-1.6397879,0.040405698,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,25.7264,16.5119,0.6077727,0.047057413,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,25.7264,16.5119,-1.5114788,0.0421123,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,25.7264,16.5119,-2.1603212,-0.0069646984,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,25.7264,16.5119,-3.0033514,-0.063099824,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,25.7264,16.5119,0.025621213,-0.051649854,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,25.7264,16.5119,3.7614696,-0.0026888996,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,25.7264,16.5119,-2.365579,0.04550249,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,25.7264,16.5119,0.8995121,0.053188868,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,25.7264,16.5119,0.92050606,0.03583657,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,25.7264,16.5119,1.092703,0.023946397,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,25.7264,16.5119,1.7489667,0.059963875,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,25.7264,16.5119,2.058212,0.024681129,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,26.1966,-9.8461,-0.22222728,0.043217637,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,26.1966,-9.8461,1.1415212,0.057868637,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,26.1966,-9.8461,0.8736788,0.0052955374,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,26.1966,-9.8461,-1.7583516,-0.059198156,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,26.1966,-9.8461,-0.5983788,-0.056781664,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,26.1966,-9.8461,3.7744696,-0.03060799,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,26.1966,-9.8461,1.9224212,0.03490413,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,26.1966,-9.8461,0.4205121,0.026663758,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,26.1966,-9.8461,-0.15249394,-0.01571817,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,26.1966,-9.8461,2.162703,0.025728472,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,26.1966,-9.8461,2.1149666,0.08197022,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,26.1966,-9.8461,-0.31178787,0.041646026,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,26.3684,1.6707,-1.5342273,0.04339934,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,26.3684,1.6707,-0.4134788,0.056804813,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,26.3684,1.6707,1.4586788,0.0024626777,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,26.3684,1.6707,-0.74235153,-0.07032363,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,26.3684,1.6707,0.07862121,-0.061002187,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,26.3684,1.6707,0.5584697,-0.024617217,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,26.3684,1.6707,0.4624212,0.028273933,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,26.3684,1.6707,2.143512,0.051873215,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,26.3684,1.6707,3.249506,0.0062094256,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,26.3684,1.6707,-0.27829698,0.028256781,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,26.3684,1.6707,-1.4030334,0.087012224,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,26.3684,1.6707,0.6722121,0.046026953,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,27.0971,-6.0041,-1.0242273,0.043594263,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,27.0971,-6.0041,-0.33147877,0.04315982,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,27.0971,-6.0041,-2.0223212,0.0054561347,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,27.0971,-6.0041,-0.3853515,-0.06875856,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,27.0971,-6.0041,-0.3353788,-0.066504695,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,27.0971,-6.0041,-2.3615303,-0.038521633,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,27.0971,-6.0041,-1.0285788,0.018472694,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,27.0971,-6.0041,2.336512,0.024283417,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,27.0971,-6.0041,-0.40249395,-0.007565014,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,27.0971,-6.0041,0.52370304,0.025154509,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,27.0971,-6.0041,-2.6780334,0.08681128,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,27.0971,-6.0041,1.3682121,0.041421063,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,27.1337,-9.1535,0.35677272,0.04382593,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,27.1337,-9.1535,-0.4544788,0.0420082,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,27.1337,-9.1535,0.18067878,0.005521767,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,27.1337,-9.1535,1.9446485,-0.06447367,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,27.1337,-9.1535,-0.6443788,-0.065949515,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,27.1337,-9.1535,1.2084697,-0.040829346,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,27.1337,-9.1535,0.8944212,0.020436622,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,27.1337,-9.1535,0.13051212,0.014842942,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,27.1337,-9.1535,1.6805061,-0.012277,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,27.1337,-9.1535,-0.71229696,0.025138877,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,27.1337,-9.1535,-0.23703334,0.08412147,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,27.1337,-9.1535,1.6942121,0.039447375,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,27.2875,18.5143,-0.6232273,0.048385285,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,27.2875,18.5143,0.17152122,0.04797844,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,27.2875,18.5143,2.4196787,-0.0082743615,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,27.2875,18.5143,1.4396485,-0.08127096,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,27.2875,18.5143,1.3316212,-0.065806724,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,27.2875,18.5143,1.1464697,-0.023862116,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,27.2875,18.5143,0.7694212,0.009698577,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,27.2875,18.5143,-2.564488,0.07815883,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,27.2875,18.5143,2.107506,0.032322086,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,27.2875,18.5143,-1.465297,0.022756152,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,27.2875,18.5143,-0.88703334,0.079051115,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,27.2875,18.5143,-2.2587879,0.04468233,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,27.3406,16.7324,0.6817727,0.047102146,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,27.3406,16.7324,0.8675212,0.045911364,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,27.3406,16.7324,-0.72032124,-0.0067471936,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,27.3406,16.7324,-1.2203515,-0.082545504,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,27.3406,16.7324,1.0066212,-0.066797,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,27.3406,16.7324,-1.8845303,-0.026803471,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,27.3406,16.7324,-0.6175788,0.007647559,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,27.3406,16.7324,-1.7054878,0.07685212,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,27.3406,16.7324,0.26350605,0.029070713,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,27.3406,16.7324,-0.27929696,0.022777848,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,27.3406,16.7324,-0.40903333,0.08209615,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,27.3406,16.7324,-0.06878788,0.046226718,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,27.4328,6.4067,-1.2192273,0.042605735,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,27.4328,6.4067,-1.3434788,0.04222823,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,27.4328,6.4067,1.0026788,0.0044878796,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,27.4328,6.4067,0.16964848,-0.08387668,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,27.4328,6.4067,-0.08237879,-0.07058841,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,27.4328,6.4067,-0.4945303,-0.03777504,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,27.4328,6.4067,-2.6835787,0.0071039274,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,27.4328,6.4067,-1.0754879,0.053136505,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,27.4328,6.4067,-0.29449394,0.010887675,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,27.4328,6.4067,-1.869297,0.022246458,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,27.4328,6.4067,0.6989667,0.088026546,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,27.4328,6.4067,0.2682121,0.04718674,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,27.8731,-0.9435,-0.42222726,0.04122018,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,27.8731,-0.9435,0.31052122,0.03165757,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,27.8731,-0.9435,-1.8353212,0.004045449,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,27.8731,-0.9435,0.11664849,-0.07336942,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,27.8731,-0.9435,-0.8113788,-0.071861945,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,27.8731,-0.9435,-1.0455303,-0.048795015,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,27.8731,-0.9435,-0.2595788,-0.004496895,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,27.8731,-0.9435,-1.4854879,0.027122386,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,27.8731,-0.9435,-0.24149394,-0.005611472,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,27.8731,-0.9435,-1.6882969,0.019970365,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,27.8731,-0.9435,-0.07303333,0.08153493,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,27.8731,-0.9435,1.6172122,0.04016661,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,27.9316,15.7123,-0.7452273,0.045659937,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,27.9316,15.7123,-1.8754787,0.037533484,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,27.9316,15.7123,1.5626788,-0.011013672,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,27.9316,15.7123,2.2096484,-0.085361406,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,27.9316,15.7123,2.0716212,-0.06933576,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,27.9316,15.7123,-0.8925303,-0.03812784,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,27.9316,15.7123,-0.91657877,-0.011750095,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,27.9316,15.7123,1.2415122,0.06853647,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,27.9316,15.7123,0.38850605,0.028793044,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,27.9316,15.7123,-0.25529698,0.021967642,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,27.9316,15.7123,0.18896666,0.08343091,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,27.9316,15.7123,-1.8397878,0.04898373,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,28.3032,-0.3379,-1.7002273,0.039788403,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,28.3032,-0.3379,1.1855212,0.024244599,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,28.3032,-0.3379,-2.5493212,-0.0025669858,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,28.3032,-0.3379,0.3856485,-0.06971151,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,28.3032,-0.3379,2.0456212,-0.076413974,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,28.3032,-0.3379,-0.0705303,-0.055255797,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,28.3032,-0.3379,1.0314212,-0.01751712,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,28.3032,-0.3379,1.0215122,0.022816636,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,28.3032,-0.3379,0.7435061,-0.007908262,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,28.3032,-0.3379,-1.2242969,0.016443945,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,28.3032,-0.3379,0.5459667,0.07398415,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,28.3032,-0.3379,3.5432122,0.034734525,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,28.7175,14.9183,-0.56522727,0.045203842,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,28.7175,14.9183,0.093521215,0.024804108,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,28.7175,14.9183,2.4986787,-0.01993186,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,28.7175,14.9183,-0.22335151,-0.08352852,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,28.7175,14.9183,0.6656212,-0.0733366,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,28.7175,14.9183,0.11146969,-0.058787882,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,28.7175,14.9183,0.76342124,-0.03569112,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,28.7175,14.9183,-0.5964879,0.049182467,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,28.7175,14.9183,-1.869494,0.021907218,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,28.7175,14.9183,-0.966297,0.020273872,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,28.7175,14.9183,-2.0250332,0.07218721,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,28.7175,14.9183,1.8512121,0.058123954,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,29.1212,22.4705,2.6687727,0.047635205,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,29.1212,22.4705,-3.1424787,0.031218924,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,29.1212,22.4705,0.19367878,-0.024736725,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,29.1212,22.4705,-0.8583515,-0.08704676,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,29.1212,22.4705,-0.106378786,-0.06800194,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,29.1212,22.4705,0.46346968,-0.06334028,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,29.1212,22.4705,1.5424212,-0.043684907,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,29.1212,22.4705,-2.014488,0.04852972,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,29.1212,22.4705,-0.31549394,0.03555023,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,29.1212,22.4705,-2.038297,0.016012214,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,29.1212,22.4705,2.2559667,0.06444997,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,29.1212,22.4705,-0.51478785,0.065671496,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,29.6484,20.4116,0.41277272,0.04484009,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,29.6484,20.4116,-0.39547879,0.025776424,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,29.6484,20.4116,0.08467879,-0.031999096,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,29.6484,20.4116,-1.0953515,-0.08493218,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,29.6484,20.4116,1.6116213,-0.072271176,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,29.6484,20.4116,0.3804697,-0.08287044,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,29.6484,20.4116,-2.7655787,-0.056886427,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,29.6484,20.4116,-0.34848788,0.034455754,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,29.6484,20.4116,0.7015061,0.026570536,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,29.6484,20.4116,1.072703,0.008302428,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,29.6484,20.4116,-2.6810334,0.055554472,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,29.6484,20.4116,0.11421212,0.06026358,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,1,29.7075,-6.4738,-0.18522727,0.022458859,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,2,29.7075,-6.4738,0.4845212,-0.002311498,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,3,29.7075,-6.4738,0.37367877,-0.039495453,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,4,29.7075,-6.4738,1.3786485,-0.0654659,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,5,29.7075,-6.4738,1.0736212,-0.071770936,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,6,29.7075,-6.4738,-1.6985303,-0.081132025,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,7,29.7075,-6.4738,1.6084212,-0.06847637,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,8,29.7075,-6.4738,0.5245121,0.007230982,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,9,29.7075,-6.4738,0.28750607,-0.026373886,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,10,29.7075,-6.4738,0.913703,-0.009051345,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,11,29.7075,-6.4738,0.9259667,0.04801356,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn
+Sahara,2020,12,29.7075,-6.4738,1.4142121,0.031191148,temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn

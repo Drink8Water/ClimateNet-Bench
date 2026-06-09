@@ -1,0 +1,2 @@
+validation_strategy,train_region,test_region,train_period,test_period,feature_set,model,model_name,n_train,n_test,MAE,RMSE,R2
+temporal_holdout,mixed,mixed,2010-2019,2020,base,tcn,tcn,7200,720,1.0951073169708252,1.373634614133745,-0.005892515182495117

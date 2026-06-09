@@ -1,0 +1,36 @@
+{
+  "results": [
+    {
+      "validation_strategy": "temporal_holdout",
+      "train_region": "mixed",
+      "test_region": "mixed",
+      "train_period": "2010-2019",
+      "test_period": "2020",
+      "feature_set": "base",
+      "model": "tcn",
+      "model_name": "tcn",
+      "n_train": 7200,
+      "n_test": 720,
+      "MAE": 1.0951073169708252,
+      "RMSE": 1.373634614133745,
+      "R2": -0.005892515182495117
+    }
+  ],
+  "best_by_strategy": [
+    {
+      "validation_strategy": "temporal_holdout",
+      "train_region": "mixed",
+      "test_region": "mixed",
+      "train_period": "2010-2019",
+      "test_period": "2020",
+      "feature_set": "base",
+      "model": "tcn",
+      "model_name": "tcn",
+      "n_train": 7200,
+      "n_test": 720,
+      "MAE": 1.0951073169708252,
+      "RMSE": 1.373634614133745,
+      "R2": -0.005892515182495117
+    }
+  ]
+}

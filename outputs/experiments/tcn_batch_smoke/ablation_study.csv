@@ -1,0 +1,2 @@
+feature_set,model_name,validation_strategy,mean_mae,mean_rmse,mean_r2,best_rmse
+base,tcn,temporal_holdout,1.0951073169708252,1.373634614133745,-0.005892515182495117,1.373634614133745

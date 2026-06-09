@@ -1,0 +1,331 @@
+validation_strategy,train_region,test_region,train_period,test_period,model,feature,importance,importance_type
+random_split,mixed,mixed,mixed,mixed,linear_regression,latitude,0.0065922526153175155,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,longitude,0.00031027877411774656,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,month_sin,0.001059096011678218,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,month_cos,0.003993695054025107,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,random_forest,latitude,0.2651707901391919,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,longitude,0.27710062264674407,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,month_sin,0.22494569605348816,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,month_cos,0.23278289116057596,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,latitude,0.2434716671705246,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,longitude,0.2604391574859619,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,month_sin,0.24840153753757477,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,month_cos,0.2476876676082611,importance
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,latitude,0.008766565229638344,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,longitude,0.00029335810755778014,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,month_sin,0.008010367893356421,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,month_cos,0.0080234431730445,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,latitude,0.2628165450561368,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,longitude,0.27481232172901,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,month_sin,0.22691787502457073,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,month_cos,0.23545325819028254,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,latitude,0.24308471381664276,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,longitude,0.2624354064464569,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,month_sin,0.26393944025039673,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,month_cos,0.2305404394865036,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,latitude,0.0019567910133878046,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,longitude,0.00019606664091533827,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,month_sin,0.005357978504517869,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,month_cos,0.0012675446335528445,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,latitude,0.26400995401128596,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,longitude,0.265764673423601,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,month_sin,0.2324444341853371,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,month_cos,0.23778093837977593,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,latitude,0.2522253692150116,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,longitude,0.24692273139953613,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,month_sin,0.2577131986618042,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,month_cos,0.24313870072364807,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,latitude,0.0006812420690562728,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,longitude,0.0030420345350126877,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,month_sin,3.1515153585976523e-16,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,month_cos,2.5097937241801043e-16,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,latitude,0.2368447639158736,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,longitude,0.2546319208892343,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,month_sin,0.24865988413739892,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,month_cos,0.25986343105749315,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,latitude,0.23715339601039886,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,longitude,0.24970389902591705,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,month_sin,0.26173192262649536,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,month_cos,0.2514107823371887,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,latitude,0.00689859091637984,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,longitude,0.008035972941558557,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,month_sin,1.7556384233909546e-16,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,month_cos,1.863030017707419e-16,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,latitude,0.2607804272716907,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,longitude,0.2645806402633253,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,month_sin,0.2352983391592821,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,month_cos,0.23934059330570195,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,latitude,0.2565487027168274,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,longitude,0.2490890473127365,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,month_sin,0.2473573237657547,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,month_cos,0.2470049411058426,importance
+random_split,mixed,mixed,mixed,mixed,linear_regression,temperature_anomaly,0.09165101837656094,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,precipitation_anomaly,0.0032674371961147488,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,radiation_anomaly,0.019172274568607955,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,soil_moisture_anomaly,16.311490361648932,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,wind_speed,0.18955247076533283,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,random_forest,temperature_anomaly,0.17433113529524707,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,precipitation_anomaly,0.150346816505104,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,radiation_anomaly,0.1857674128101716,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,soil_moisture_anomaly,0.2819500025038243,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,wind_speed,0.2076046328856531,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,temperature_anomaly,0.14365865290164948,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,precipitation_anomaly,0.14580035209655762,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,radiation_anomaly,0.16732877492904663,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,soil_moisture_anomaly,0.3285302519798279,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,wind_speed,0.2146819531917572,importance
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,temperature_anomaly,0.10488024663637681,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,precipitation_anomaly,0.005824356570240698,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,radiation_anomaly,0.01978350206556481,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,soil_moisture_anomaly,17.81491535979386,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,wind_speed,0.194716524952812,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,temperature_anomaly,0.1785938896333216,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,precipitation_anomaly,0.14740623384543644,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,radiation_anomaly,0.18276621322736805,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,soil_moisture_anomaly,0.28430246713267626,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,wind_speed,0.20693119616119765,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,temperature_anomaly,0.1485016942024231,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,precipitation_anomaly,0.137019544839859,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,radiation_anomaly,0.16126011312007904,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,soil_moisture_anomaly,0.3418497145175934,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,wind_speed,0.21136893332004547,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,temperature_anomaly,0.10200918145518546,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,precipitation_anomaly,0.004484115535704128,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,radiation_anomaly,0.020316355416200575,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,soil_moisture_anomaly,17.184796880101032,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,wind_speed,0.2001503110980011,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,temperature_anomaly,0.17575004352214083,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,precipitation_anomaly,0.14810550473993034,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,radiation_anomaly,0.18487207666919156,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,soil_moisture_anomaly,0.28661262741161964,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,wind_speed,0.20465974765711764,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,temperature_anomaly,0.1426524817943573,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,precipitation_anomaly,0.1411375105381012,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,radiation_anomaly,0.15900395810604095,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,soil_moisture_anomaly,0.3352726995944977,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,wind_speed,0.22193333506584167,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,temperature_anomaly,0.10977394811774412,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,precipitation_anomaly,0.0015507450740582603,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,radiation_anomaly,0.02147849775286237,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,soil_moisture_anomaly,19.228875697417777,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,wind_speed,0.26934106132158275,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,temperature_anomaly,0.19425431721737405,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,precipitation_anomaly,0.16005714304738805,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,radiation_anomaly,0.20664281771607873,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,soil_moisture_anomaly,0.183855175990393,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,wind_speed,0.25519054602876606,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,temperature_anomaly,0.17685270309448242,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,precipitation_anomaly,0.14484849572181702,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,radiation_anomaly,0.2063673436641693,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,soil_moisture_anomaly,0.1839420646429062,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,wind_speed,0.28798937797546387,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,temperature_anomaly,0.09263051177448374,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,precipitation_anomaly,0.004372725248616112,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,radiation_anomaly,0.01900489637688561,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,soil_moisture_anomaly,16.997576160377502,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,wind_speed,0.2612512582744858,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,temperature_anomaly,0.1606979467895427,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,precipitation_anomaly,0.12952262503664277,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,radiation_anomaly,0.1661592633804593,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,soil_moisture_anomaly,0.3653769404458444,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,wind_speed,0.17824322434751097,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,temperature_anomaly,0.13297615945339203,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,precipitation_anomaly,0.16112610697746277,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,radiation_anomaly,0.14748042821884155,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,soil_moisture_anomaly,0.38608184456825256,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,wind_speed,0.1723354458808899,importance
+random_split,mixed,mixed,mixed,mixed,linear_regression,dryness_proxy,2.546587290265463e-10,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,saturation_vapor_pressure,2.64317290465102e-19,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,random_forest,dryness_proxy,0.5064812102948532,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,saturation_vapor_pressure,0.4935187897051468,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,dryness_proxy,0.5972273349761963,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,saturation_vapor_pressure,0.4027726948261261,importance
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,dryness_proxy,1.9628141598340222e-10,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,saturation_vapor_pressure,1.8216047737526613e-19,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,dryness_proxy,0.5023208377028547,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,saturation_vapor_pressure,0.49767916229714537,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,dryness_proxy,0.6068704724311829,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,saturation_vapor_pressure,0.39312952756881714,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,dryness_proxy,2.414092659626041e-10,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,saturation_vapor_pressure,2.2319385343101236e-19,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,dryness_proxy,0.5002310778764902,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,saturation_vapor_pressure,0.4997689221235098,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,dryness_proxy,0.5979928970336914,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,saturation_vapor_pressure,0.4020070731639862,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,dryness_proxy,2.3719325627024125e-10,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,saturation_vapor_pressure,9.195924170558727e-19,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,dryness_proxy,0.5027914818868718,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,saturation_vapor_pressure,0.4972085181131283,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,dryness_proxy,0.5142568945884705,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,saturation_vapor_pressure,0.48574307560920715,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,dryness_proxy,8.810360693019582e-09,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,saturation_vapor_pressure,6.703143243729706e-17,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,dryness_proxy,0.5152003508885707,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,saturation_vapor_pressure,0.4847996491114292,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,dryness_proxy,0.585345447063446,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,saturation_vapor_pressure,0.41465458273887634,importance
+random_split,mixed,mixed,mixed,mixed,linear_regression,latitude,2.6866961264189496e-18,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,longitude,5.5448809396120874e-17,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,month_sin,5.355821182729817e-19,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,month_cos,2.075128030252964e-19,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,temperature_anomaly,9.431274019400728e-21,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,precipitation_anomaly,3.659387083764194e-18,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,radiation_anomaly,3.247301299840876e-20,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,soil_moisture_anomaly,4.341418395858813e-21,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,wind_speed,6.878625520395844e-19,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,dryness_proxy,2.546587290265346e-10,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,linear_regression,saturation_vapor_pressure,2.6431729047355685e-19,absolute_coefficient
+random_split,mixed,mixed,mixed,mixed,random_forest,latitude,0.060713463843585606,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,longitude,0.061726081273951905,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,month_sin,0.024677384960945948,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,month_cos,0.022449091214956987,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,temperature_anomaly,0.112491211934537,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,precipitation_anomaly,0.07919244554552977,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,radiation_anomaly,0.12456559676650805,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,soil_moisture_anomaly,0.2137062281647385,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,wind_speed,0.15006095600870858,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,dryness_proxy,0.07927064500738036,importance
+random_split,mixed,mixed,mixed,mixed,random_forest,saturation_vapor_pressure,0.07114689527915735,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,latitude,0.05578042194247246,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,longitude,0.05618658661842346,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,month_sin,0.04453914612531662,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,month_cos,0.0486067570745945,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,temperature_anomaly,0.09391466528177261,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,precipitation_anomaly,0.0910714864730835,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,radiation_anomaly,0.11272596567869186,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,soil_moisture_anomaly,0.22747904062271118,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,wind_speed,0.13884344696998596,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,dryness_proxy,0.07212091237306595,importance
+random_split,mixed,mixed,mixed,mixed,xgboost,saturation_vapor_pressure,0.0587315559387207,importance
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,latitude,1.6949147061973782e-18,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,longitude,4.2970725795630587e-17,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,month_sin,4.1195837569409586e-19,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,month_cos,1.6980822344464684e-19,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,temperature_anomaly,5.1221766140653286e-20,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,precipitation_anomaly,2.992063123074727e-18,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,radiation_anomaly,1.0413105180367256e-19,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,soil_moisture_anomaly,3.63604953079358e-21,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,wind_speed,4.904950342754146e-19,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,dryness_proxy,1.9628141598340338e-10,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,linear_regression,saturation_vapor_pressure,1.8216047738207632e-19,absolute_coefficient
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,latitude,0.057185536193158255,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,longitude,0.05480607997491007,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,month_sin,0.024391138931710177,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,month_cos,0.023255256646189545,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,temperature_anomaly,0.11631193489201301,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,precipitation_anomaly,0.07835239082896363,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,radiation_anomaly,0.12341910339510993,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,soil_moisture_anomaly,0.21995322644320525,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,wind_speed,0.14963261235837175,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,dryness_proxy,0.07930565400559657,importance
+spatial_holdout,mixed,mixed,mixed,mixed,random_forest,saturation_vapor_pressure,0.07338706633077184,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,latitude,0.053866270929574966,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,longitude,0.04968695715069771,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,month_sin,0.04783079773187637,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,month_cos,0.05673716217279434,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,temperature_anomaly,0.09509430080652237,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,precipitation_anomaly,0.09369093179702759,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,radiation_anomaly,0.10045722872018814,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,soil_moisture_anomaly,0.23696576058864594,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,wind_speed,0.14046607911586761,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,dryness_proxy,0.06857889145612717,importance
+spatial_holdout,mixed,mixed,mixed,mixed,xgboost,saturation_vapor_pressure,0.05662558972835541,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,latitude,2.5161721757765044e-18,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,longitude,5.244140660117166e-17,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,month_sin,5.043854455846991e-19,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,month_cos,2.1624702013070633e-19,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,temperature_anomaly,3.8653525399966535e-20,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,precipitation_anomaly,3.537123372356342e-18,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,radiation_anomaly,1.5568004634896852e-19,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,soil_moisture_anomaly,4.143810427446313e-21,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,wind_speed,6.275347447927169e-19,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,dryness_proxy,2.414092659625793e-10,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,linear_regression,saturation_vapor_pressure,2.2319385343940123e-19,absolute_coefficient
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,latitude,0.05812750738880453,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,longitude,0.05977089966708714,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,month_sin,0.023890808042727626,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,month_cos,0.022283900527666642,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,temperature_anomaly,0.11348832367570869,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,precipitation_anomaly,0.0769268530556667,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,radiation_anomaly,0.12466722605197889,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,soil_moisture_anomaly,0.2213532679192208,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,wind_speed,0.1484739001205681,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,dryness_proxy,0.0781732814880152,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,random_forest,saturation_vapor_pressure,0.0728440320625558,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,latitude,0.0476694330573082,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,longitude,0.052397552877664566,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,month_sin,0.04748155549168587,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,month_cos,0.056428875774145126,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,temperature_anomaly,0.09750526398420334,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,precipitation_anomaly,0.09324315935373306,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,radiation_anomaly,0.10818322747945786,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,soil_moisture_anomaly,0.22974258661270142,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,wind_speed,0.13842791318893433,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,dryness_proxy,0.07047533243894577,importance
+temporal_holdout,mixed,mixed,2010-2019,2020,xgboost,saturation_vapor_pressure,0.05844511091709137,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,latitude,9.98525938853925e-20,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,longitude,5.336773576126251e-19,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,month_sin,5.43172129699847e-19,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,month_cos,2.2690478684956427e-19,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,temperature_anomaly,2.5959243571425618e-20,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,precipitation_anomaly,3.707507955436903e-18,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,radiation_anomaly,3.869208153350598e-20,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,soil_moisture_anomaly,4.2592771280830184e-21,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,wind_speed,2.0537636838246273e-21,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,dryness_proxy,2.371932562702417e-10,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,linear_regression,saturation_vapor_pressure,9.19592417055871e-19,absolute_coefficient
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,latitude,0.06465980941053616,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,longitude,0.06748490068744827,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,month_sin,0.02460408059901311,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,month_cos,0.022807260519527632,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,temperature_anomaly,0.12128511276300181,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,precipitation_anomaly,0.08026085086466782,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,radiation_anomaly,0.13961039601411815,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,soil_moisture_anomaly,0.12091235024120474,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,wind_speed,0.18655496229573992,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,dryness_proxy,0.08570786102312762,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,random_forest,saturation_vapor_pressure,0.08611241558161474,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,latitude,0.0663820132613182,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,longitude,0.07088630646467209,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,month_sin,0.05873102694749832,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,month_cos,0.0690280944108963,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,temperature_anomaly,0.1047980934381485,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,precipitation_anomaly,0.07606615871191025,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,radiation_anomaly,0.11454350501298904,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,soil_moisture_anomaly,0.10578006505966187,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,wind_speed,0.17442204058170319,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,dryness_proxy,0.0790836289525032,importance
+region_transfer,Sahara,East China,2010-2020,2010-2020,xgboost,saturation_vapor_pressure,0.08027904480695724,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,latitude,0.009794547482221654,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,longitude,0.005298934567701787,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,month_sin,5.497117420642457e-07,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,month_cos,1.5817456652727052e-06,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,temperature_anomaly,0.0002180432838604853,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,precipitation_anomaly,0.026326960293559753,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,radiation_anomaly,0.013079529951454366,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,soil_moisture_anomaly,4.428166408214312e-05,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,wind_speed,5.459550402349525e-05,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,dryness_proxy,1.4745736548126618e-09,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,linear_regression,saturation_vapor_pressure,2.510815871329394e-05,absolute_coefficient
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,latitude,0.04979321361744251,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,longitude,0.050365506990090556,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,month_sin,0.022722949793832502,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,month_cos,0.019859935155528807,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,temperature_anomaly,0.10684007237436052,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,precipitation_anomaly,0.07270923193235897,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,radiation_anomaly,0.11556085358650352,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,soil_moisture_anomaly,0.305494156223364,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,wind_speed,0.12844417604328356,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,dryness_proxy,0.06774664898527064,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,random_forest,saturation_vapor_pressure,0.060463255297964355,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,latitude,0.05355682596564293,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,longitude,0.052544835954904556,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,month_sin,0.05102471262216568,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,month_cos,0.05388381704688072,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,temperature_anomaly,0.08597530424594879,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,precipitation_anomaly,0.1031201109290123,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,radiation_anomaly,0.09068388491868973,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,soil_moisture_anomaly,0.27673810720443726,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,wind_speed,0.10554086416959763,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,dryness_proxy,0.06695836782455444,importance
+region_transfer,East China,Sahara,2010-2020,2010-2020,xgboost,saturation_vapor_pressure,0.05997305363416672,importance

@@ -1,0 +1,166 @@
+data:
+  input_data_path: data/processed/sample_climate_data.csv
+  features_path: data/processed/features.csv
+  target_column: evaporation_anomaly
+  region_column: region
+  spatial_columns:
+  - latitude
+  - longitude
+  time_columns:
+  - year
+  - month
+  required_raw_columns:
+  - region
+  - year
+  - month
+  - latitude
+  - longitude
+  - temperature
+  - precipitation
+  - radiation
+  - soil_moisture
+  - u_wind
+  - v_wind
+  - evaporation
+  era5:
+    dataset_name: reanalysis-era5-land-monthly-means
+    raw_dir: data/raw/era5_land
+    processed_path: data/processed/era5_climate_data.csv
+    safe_default_years:
+    - '2019'
+    safe_default_months:
+    - '01'
+    full_years:
+    - '2019'
+    - '2020'
+    - '2021'
+    - '2022'
+    - '2023'
+    variables:
+    - 2m_temperature
+    - total_precipitation
+    - surface_solar_radiation_downwards
+    - total_evaporation
+    - volumetric_soil_water_layer_1
+    - 10m_u_component_of_wind
+    - 10m_v_component_of_wind
+    regions:
+      Sahara:
+        cds_area:
+        - 30.0
+        - -20.0
+        - 15.0
+        - 30.0
+      East China:
+        cds_area:
+        - 35.0
+        - 105.0
+        - 20.0
+        - 122.0
+models:
+  models:
+    linear_regression:
+      enabled: true
+    random_forest:
+      enabled: true
+      params:
+        n_estimators: 250
+        min_samples_leaf: 3
+        n_jobs: -1
+    xgboost:
+      enabled: true
+      params:
+        n_estimators: 300
+        learning_rate: 0.05
+        max_depth: 4
+        subsample: 0.9
+        colsample_bytree: 0.9
+        objective: reg:squarederror
+        n_jobs: 1
+    lightgbm:
+      enabled: true
+      skip_if_missing: true
+      params:
+        n_estimators: 300
+        learning_rate: 0.05
+        verbose: -1
+experiment:
+  experiment_id: synthetic_phase3_baseline
+  seed: 42
+  output_root: outputs/experiments
+  features_path: data/processed/features.csv
+  target_column: evaporation_anomaly
+  save_plots: true
+  test_size: 0.2
+  train_start_year: 2010
+  train_end_year: 2019
+  test_year: 2020
+  validation_strategies:
+  - random_split
+  - spatial_holdout
+  - temporal_holdout
+  - region_transfer
+  region_transfer_pairs:
+  - train_region: Sahara
+    test_region: East China
+  - train_region: East China
+    test_region: Sahara
+  batch_models:
+  - linear_regression
+  - random_forest
+  - xgboost
+  feature_sets:
+    base:
+    - latitude
+    - longitude
+    - month_sin
+    - month_cos
+    meteorological:
+    - temperature_anomaly
+    - precipitation_anomaly
+    - radiation_anomaly
+    - soil_moisture_anomaly
+    - wind_speed
+    physical:
+    - dryness_proxy
+    - saturation_vapor_pressure
+    full:
+    - latitude
+    - longitude
+    - month_sin
+    - month_cos
+    - temperature_anomaly
+    - precipitation_anomaly
+    - radiation_anomaly
+    - soil_moisture_anomaly
+    - wind_speed
+    - dryness_proxy
+    - saturation_vapor_pressure
+  tcn:
+    sequence_length: 6
+    epochs: 10
+    batch_size: 128
+    learning_rate: 0.001
+    channels:
+    - 32
+    - 32
+    - 32
+    dropout: 0.2
+  model_features:
+  - latitude
+  - longitude
+  - temperature
+  - precipitation
+  - radiation
+  - soil_moisture
+  - u_wind
+  - v_wind
+  - wind_speed
+  - month_sin
+  - month_cos
+  - temperature_anomaly
+  - precipitation_anomaly
+  - radiation_anomaly
+  - soil_moisture_anomaly
+  - dryness_proxy
+  - saturation_vapor_pressure
