@@ -1,6 +1,18 @@
-"""Validation strategies for gridded spatio-temporal climate data."""
+"""Validation strategies for gridded spatio-temporal climate data.
+
+.. deprecated::
+   Use ``climatenet.benchmark.split_protocols`` instead.
+"""
 
 from __future__ import annotations
+
+import warnings
+
+warnings.warn(
+    "src/validation.py is deprecated. Use climatenet.benchmark.split_protocols.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 from dataclasses import dataclass
 

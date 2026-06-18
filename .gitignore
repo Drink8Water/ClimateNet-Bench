@@ -45,5 +45,12 @@ data/processed/forecasting_metadata.json
 # Pytest
 .pytest_cache/
 
+# Generated experiment outputs
+outputs/mini_benchmark/
+outputs/matplotlib-cache/
+outputs/benchmark/
+outputs/experiments/latest/
+reports/
+
 # Logs
 *.log

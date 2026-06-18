@@ -1,0 +1,16 @@
+# ClimateNet-Bench: optional machine learning dependencies
+#
+# Install with:  pip install -r requirements-ml.txt
+#
+# These packages are NOT required for the core benchmark pipeline
+# (climatology, persistence, and the evaluation runner work without
+# them).  They are needed for the full model zoo and CI demo.
+
+# Gradient boosting (fast, GPU-capable)
+lightgbm>=4.0
+
+# Deep learning (TCN, future LSTM/Transformer)
+torch>=2.2
+
+# Model explainability
+shap>=0.45

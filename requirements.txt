@@ -18,3 +18,4 @@ python-dotenv>=1.0
 PyYAML>=6.0
 pytest>=8.0
 torch>=2.2
+# lightgbm>=4.0  # optional — install via: pip install -r requirements-ml.txt
