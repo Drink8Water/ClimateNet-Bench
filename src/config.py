@@ -1,6 +1,18 @@
-"""Shared configuration for the climate ML pipeline."""
+"""Shared configuration for the climate ML pipeline.
+
+.. deprecated::
+   Use ``climatenet.utils.config`` and ``backend.config`` instead.
+"""
 
 from pathlib import Path
+
+import warnings
+
+warnings.warn(
+    "src/config.py is deprecated. Use climatenet.utils.config or backend.config.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 RANDOM_SEED = 42
 

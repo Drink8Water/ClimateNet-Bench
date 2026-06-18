@@ -1,6 +1,18 @@
-"""Create physically informed features and anomaly variables."""
+"""Create physically informed features and anomaly variables.
+
+.. deprecated::
+   This module is deprecated. Use ``climatenet.features.pipeline.build_features()``.
+"""
 
 from __future__ import annotations
+
+import warnings
+
+warnings.warn(
+    "src/features.py is deprecated. Use climatenet.features.pipeline instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 import argparse
 from pathlib import Path

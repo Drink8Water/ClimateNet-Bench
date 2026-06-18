@@ -1,6 +1,18 @@
-"""Evaluate model predictions using regression metrics."""
+"""Evaluate model predictions using regression metrics.
+
+.. deprecated::
+   Use ``climatenet.evaluation.metrics.evaluate_regression()`` instead.
+"""
 
 from __future__ import annotations
+
+import warnings
+
+warnings.warn(
+    "src/evaluate.py is deprecated. Use climatenet.evaluation.metrics.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 import json
 

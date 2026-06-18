@@ -1,6 +1,19 @@
-"""Train models under random, spatial, and cross-region validation strategies."""
+"""Train models under random, spatial, and cross-region validation strategies.
+
+.. deprecated::
+   This module is deprecated and will be removed in v1.0.0.
+   Use ``climatenet.training.benchmark_runner.run_benchmark()`` instead.
+"""
 
 from __future__ import annotations
+
+import warnings
+
+warnings.warn(
+    "src/train.py is deprecated. Use climatenet.training.benchmark_runner instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 import json
 from pathlib import Path

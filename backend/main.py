@@ -60,14 +60,9 @@ def health() -> HealthResponse:
 
 
 # ── Legacy PostgreSQL endpoints (only active when DATABASE_URL is set) ──
-try:
-    from backend.database import get_db  # noqa: F401
+from backend.database import is_db_available
 
-    _db_available = True
-except RuntimeError:
-    _db_available = False
-
-if _db_available:
+if is_db_available():
     from backend import crud, schemas as legacy_schemas
     from backend.database import get_db
     from fastapi import Depends, Query
