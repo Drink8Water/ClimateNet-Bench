@@ -14,12 +14,19 @@ from collections.abc import Generator
 from typing import Any
 
 from dotenv import load_dotenv
+from sqlalchemy.orm import DeclarativeBase
 
 logger = logging.getLogger(__name__)
 
 load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL")
+
+
+class Base(DeclarativeBase):
+    """Base class for backend SQLAlchemy models."""
+
+    pass
 
 _engine: Any = None
 _SessionLocal: Any = None
@@ -56,6 +63,12 @@ def is_db_available() -> bool:
     """Return True when PostgreSQL is configured and reachable."""
     _init_db()
     return _db_available
+
+
+def get_engine() -> Any:
+    """Return the configured SQLAlchemy engine, or None in mock mode."""
+    _init_db()
+    return _engine
 
 
 def get_db() -> Generator[Any, None, None]:

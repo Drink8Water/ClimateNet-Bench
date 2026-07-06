@@ -5,8 +5,28 @@ const client = axios.create({
   timeout: 15000,
 })
 
+const platformClient = axios.create({
+  baseURL: '/platform-api',
+  timeout: 15000,
+})
+
 async function get(path, params = {}) {
   const { data } = await client.get(path, { params })
+  return data
+}
+
+async function platformGet(path, params = {}) {
+  const { data } = await platformClient.get(path, { params })
+  return data
+}
+
+async function platformPost(path, payload = {}) {
+  const { data } = await platformClient.post(path, payload)
+  return data
+}
+
+async function platformPostForm(path, formData) {
+  const { data } = await platformClient.post(path, formData)
   return data
 }
 
@@ -43,3 +63,11 @@ export function fetchTimeseries(params = {}) { return get('/timeseries', params)
 // ── Legacy / misc ──────────────────────────────────────────────────
 export function fetchProjectSummary() { return get('/project-summary') }
 export function fetchDatasetSummary() { return get('/dataset-summary') }
+
+// ── Backend platform API ───────────────────────────────────────────
+export function fetchPlatformHealth() { return platformGet('/health') }
+export function fetchPlatformLeaderboard(params = {}) { return platformGet('/leaderboard', params) }
+export function fetchEvaluationRun(runId) { return platformGet(`/evaluation-runs/${runId}`) }
+export function fetchEvaluationRunStatus(runId) { return platformGet(`/evaluation-runs/${runId}/status`) }
+export function createSubmission(payload) { return platformPost('/submissions', payload) }
+export function uploadSubmission(formData) { return platformPostForm('/submissions/upload', formData) }

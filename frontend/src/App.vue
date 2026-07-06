@@ -9,11 +9,11 @@ const pageTitle = computed(() => route.meta?.title || 'ClimateNet')
 </script>
 
 <template>
-  <div class="flex h-screen overflow-hidden">
+  <div class="min-h-screen bg-[var(--color-bg)]">
     <Sidebar />
-    <div class="flex-1 flex flex-col min-w-0">
+    <div class="min-w-0">
       <TopBar :title="pageTitle" />
-      <main class="flex-1 overflow-y-auto p-6">
+      <main id="main-content" class="mx-auto w-full max-w-[1440px] px-5 py-6 lg:px-8">
         <router-view />
       </main>
     </div>

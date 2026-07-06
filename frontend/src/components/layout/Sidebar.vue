@@ -1,18 +1,20 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
-import { computed } from 'vue'
+import { useI18n } from '../../i18n'
 
 const route = useRoute()
 const router = useRouter()
+const { locale, setLocale } = useI18n()
 
 const navItems = [
-  { path: '/', label: 'Overview', icon: '⊡' },
-  { path: '/leaderboard', label: 'Leaderboard', icon: '⊟' },
-  { path: '/split-difficulty', label: 'Split Difficulty', icon: '⊞' },
-  { path: '/forecast', label: 'Forecast Explorer', icon: '◷' },
-  { path: '/uncertainty', label: 'Uncertainty', icon: '◎' },
-  { path: '/physical', label: 'Physical Audit', icon: '⚖' },
-  { path: '/spatial', label: 'Spatial Diagnostics', icon: '◫' },
+  { path: '/', zh: '概览', en: 'Overview' },
+  { path: '/leaderboard', zh: '排行榜', en: 'Leaderboard' },
+  { path: '/evaluation', zh: '提交评测', en: 'Evaluation' },
+  { path: '/forecast', zh: '预测分析', en: 'Forecasts' },
+  { path: '/spatial', zh: '空间诊断', en: 'Spatial' },
+  { path: '/uncertainty', zh: '不确定性', en: 'Uncertainty' },
+  { path: '/physical', zh: '物理审计', en: 'Physical audit' },
+  { path: '/split-difficulty', zh: '划分难度', en: 'Split difficulty' },
 ]
 
 function isActive(path) {
@@ -23,32 +25,33 @@ function navigate(path) { router.push(path) }
 </script>
 
 <template>
-  <aside class="w-56 flex-shrink-0 bg-white border-r border-gray-200 flex flex-col h-full">
-    <div class="px-4 py-4 border-b border-gray-100">
+  <header class="sticky top-0 z-30 border-b border-[var(--color-border)] bg-[rgba(245,247,244,0.92)] backdrop-blur">
+    <a href="#main-content" class="skip-link">跳到主要内容</a>
+    <div class="mx-auto flex min-h-16 max-w-[1440px] flex-wrap items-center gap-3 px-5 py-3 lg:flex-nowrap lg:gap-5 lg:px-8">
       <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-teal-500 flex items-center justify-center text-white font-bold text-sm">C</div>
+        <div class="brand-mark">C</div>
         <div>
-          <div class="font-semibold text-sm text-gray-900">ClimateNet-Bench</div>
-          <div class="text-[10px] text-gray-400">Evaporation Anomaly Forecast</div>
+          <div class="font-semibold text-sm text-[var(--color-text)]">ClimateNet-Bench</div>
+          <div class="text-[10px] text-[var(--color-muted)]">{{ locale === 'zh' ? '气候基准评测工作台' : 'climate evaluation workbench' }}</div>
         </div>
       </div>
-    </div>
 
-    <nav class="flex-1 px-3 py-3 space-y-0.5 overflow-y-auto">
-      <div
+      <nav class="order-3 flex w-full items-center gap-1 overflow-x-auto pb-1 lg:order-none lg:w-auto lg:flex-1 lg:pb-0">
+        <button
         v-for="item in navItems"
         :key="item.path"
         class="sidebar-link"
         :class="{ active: isActive(item.path) }"
         @click="navigate(item.path)"
       >
-        <span class="text-base w-5 text-center">{{ item.icon }}</span>
-        <span>{{ item.label }}</span>
-      </div>
-    </nav>
+          <span>{{ locale === 'zh' ? item.zh : item.en }}</span>
+        </button>
+      </nav>
 
-    <div class="px-4 py-3 border-t border-gray-100 text-xs text-gray-400">
-      ClimateNet-Bench v0.3.0
+      <div class="ml-auto flex items-center gap-2">
+        <button class="locale-button" :class="{ active: locale === 'zh' }" @click="setLocale('zh')">中文</button>
+        <button class="locale-button" :class="{ active: locale === 'en' }" @click="setLocale('en')">EN</button>
+      </div>
     </div>
-  </aside>
+  </header>
 </template>

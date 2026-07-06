@@ -13,6 +13,50 @@ class HealthResponse(BaseModel):
     database: str = "file-based"
 
 
+# ── Submissions ─────────────────────────────────────────────────────
+class SubmissionCreateRequest(BaseModel):
+    model_id: int
+    benchmark_task_id: int
+    split_protocol_id: int
+    prediction_csv_path: str
+    name: str | None = None
+    submitted_by: str | None = None
+
+
+class SubmissionCreateResponse(BaseModel):
+    submission_id: int
+    evaluation_run_id: int
+    status: str
+    prediction_csv_path: str
+
+
+class EvaluationRunStatusResponse(BaseModel):
+    evaluation_run_id: int
+    status: str
+    progress_percent: int
+    error_message: str | None = None
+
+
+class EvaluationRunDetailResponse(BaseModel):
+    evaluation_run_id: int
+    submission_id: int
+    split_protocol_id: int
+    status: str
+    metrics: list[dict[str, Any]]
+    artifacts: list[dict[str, Any]]
+    error_message: str | None = None
+
+
+class SubmissionDetailResponse(BaseModel):
+    submission_id: int
+    model_id: int
+    benchmark_task_id: int
+    name: str
+    status: str
+    prediction_csv_path: str | None = None
+    evaluation_runs: list[dict[str, Any]]
+
+
 # ── Summary ─────────────────────────────────────────────────────────
 class PipelineStep(BaseModel):
     step: int

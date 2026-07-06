@@ -16,10 +16,24 @@ from backend.routers import (
     experiments,
     leaderboard,
     physical,
+    platform,
     predictions,
     spatial,
     summary,
     uncertainty,
+)
+from backend.database import get_db, is_db_available
+from backend.routers.platform import (
+    api_create_submission,
+    api_datasets,
+    api_download_artifact,
+    api_get_evaluation_run,
+    api_get_evaluation_run_status,
+    api_get_submission,
+    api_health,
+    api_leaderboard,
+    api_models,
+    api_upload_submission,
 )
 from backend.schemas import HealthResponse
 
@@ -38,11 +52,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 # ── Benchmark routers (new) ───────────────────────────────────────
 app.include_router(benchmark.router)
 app.include_router(leaderboard.router)
 app.include_router(uncertainty.router)
 app.include_router(physical.router)
+app.include_router(platform.router)
 
 # ── Existing file-based routers ────────────────────────────────────
 app.include_router(summary.router)
@@ -60,11 +76,9 @@ def health() -> HealthResponse:
 
 
 # ── Legacy PostgreSQL endpoints (only active when DATABASE_URL is set) ──
-from backend.database import is_db_available
 
 if is_db_available():
     from backend import crud, schemas as legacy_schemas
-    from backend.database import get_db
     from fastapi import Depends, Query
     from sqlalchemy import text
     from sqlalchemy.orm import Session

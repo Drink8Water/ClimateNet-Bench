@@ -5,8 +5,13 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center py-20 text-gray-400">
-    <div class="w-10 h-10 border-3 border-gray-200 border-t-blue-500 rounded-full animate-spin mb-4"></div>
-    <span class="text-sm">{{ message }}</span>
+  <div class="space-y-4 py-8">
+    <div class="h-24 animate-pulse rounded-lg bg-[var(--color-panel)]"></div>
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
+      <div class="h-20 animate-pulse rounded-lg bg-[var(--color-panel)]"></div>
+      <div class="h-20 animate-pulse rounded-lg bg-[var(--color-panel)]"></div>
+      <div class="h-20 animate-pulse rounded-lg bg-[var(--color-panel)]"></div>
+    </div>
+    <span class="block text-sm text-[var(--color-muted)]">{{ message }}</span>
   </div>
 </template>
