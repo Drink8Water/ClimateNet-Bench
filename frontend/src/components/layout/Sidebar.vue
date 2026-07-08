@@ -7,7 +7,7 @@ const router = useRouter()
 const { locale, setLocale } = useI18n()
 
 const navItems = [
-  { path: '/', zh: '概览', en: 'Overview' },
+  { path: '/', zh: '工作台', en: 'Workbench' },
   { path: '/leaderboard', zh: '排行榜', en: 'Leaderboard' },
   { path: '/evaluation', zh: '提交评测', en: 'Evaluation' },
   { path: '/forecast', zh: '预测分析', en: 'Forecasts' },
