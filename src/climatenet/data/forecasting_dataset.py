@@ -192,117 +192,163 @@ def build_forecasting_samples(
     if missing:
         raise ValueError(f"Missing required columns in feature table: {missing}")
 
-    # ------------------------------------------------------------------
-    # sorted time series per grid cell
-    # ------------------------------------------------------------------
+    # The historical implementation constructed one Python dict per sample.
+    # That is useful for readability but is not viable for multi-million-row
+    # ERA5 tables. The vectorised implementation below preserves the schema
+    # and lag convention while keeping peak memory bounded.
     group_keys = ["region", "latitude", "longitude"]
-    rows: list[dict[str, Any]] = []
-    total_dropped = 0
-    grid_cell_count = 0
-    # Also lag the target column so persistence baseline can use lag_1 target.
-    lag_target = True
+    required_static = [
+        column
+        for column in static_columns
+        if column not in {"latitude", "longitude"}
+    ]
+    missing_static = [
+        column for column in required_static if column not in data.columns
+    ]
+    if missing_static:
+        raise ValueError(
+            f"Missing required static columns in feature table: {missing_static}"
+        )
+    working_columns = list(
+        dict.fromkeys(
+            [
+                *group_keys,
+                "year",
+                "month",
+                *feature_columns,
+                *required_static,
+                target_column,
+            ]
+        )
+    )
+    working = data[working_columns].sort_values(
+        [*group_keys, "year", "month"], kind="mergesort"
+    ).reset_index(drop=True)
+    duplicate = working.duplicated([*group_keys, "year", "month"])
+    if duplicate.any():
+        raise ValueError(
+            "Duplicate region/year/month/latitude/longitude rows prevent "
+            "unambiguous lag construction"
+        )
 
-    for (region, lat, lon), group in data.groupby(group_keys):
-        grid_cell_count += 1
-        grid_id = make_grid_id(lat, lon)
-
-        # Chronological sort — required for correct lag construction.
-        group = group.sort_values(["year", "month"]).reset_index(drop=True)
-
-        # A grid cell needs at least sequence_length + 1 rows to produce
-        # one sample (6 input months + 1 target month).
-        min_rows = sequence_length + 1
-        if len(group) < min_rows:
-            total_dropped += len(group)
-            continue
-
-        n_months = len(group)
-        for t in range(sequence_length, n_months):
-            # t = index of the target month.
-            # Input window = t - sequence_length ... t - 1.
-            window_start = t - sequence_length
-            window_end = t - 1  # inclusive
-
-            target_row = group.iloc[t]
-            target_year = int(target_row["year"])
-            target_month = int(target_row["month"])
-
-            # --- build sample row ---
-            sample: dict[str, Any] = {}
-
-            # identifiers
-            sample["sample_id"] = make_sample_id(
-                str(region), grid_id, target_year, target_month
-            )
-            sample["grid_id"] = grid_id
-            sample["region"] = str(region)
-            sample["target_year"] = target_year
-            sample["target_month"] = target_month
-            sample["latitude"] = float(lat)
-            sample["longitude"] = float(lon)
-
-            # climate_type from registry
-            try:
-                r = registry.get(str(region))
-                sample["climate_type"] = r.climate_type
-            except KeyError:
-                sample["climate_type"] = "unknown"
-
-            # input window boundaries
-            input_start_row = group.iloc[window_start]
-            input_end_row = group.iloc[window_end]
-            sample["input_window_start"] = (
-                f"{int(input_start_row['year'])}-{int(input_start_row['month']):02d}"
-            )
-            sample["input_window_end"] = (
-                f"{int(input_end_row['year'])}-{int(input_end_row['month']):02d}"
-            )
-
-            # --- lagged features ---
-            # lag_1 = t-1 (previous month), lag_6 = t-6 (six months before target)
-            for lag_idx in range(1, sequence_length + 1):
-                source_idx = t - lag_idx  # t-1, t-2, ..., t-6
-                source_row = group.iloc[source_idx]
-                for feat in feature_columns:
-                    col_name = f"{feat}_lag_{lag_idx}"
-                    sample[col_name] = float(source_row[feat])
-
-            # --- static context from target month ---
-            # month_sin / month_cos encode *which* month we predict for.
-            # latitude / longitude are already set above.
-            for feat in static_columns:
-                if feat in ("latitude", "longitude"):
-                    continue  # already set as identifiers
-                if feat in target_row.index:
-                    sample[feat] = float(target_row[feat])
-
-            # --- lagged target (for persistence baseline only) ---
-            # persistence model uses y_{t-1} as its prediction.
-            # This column is metadata, NOT a model feature.
-            if lag_target:
-                source_idx = t - 1  # previous month
-                source_row = group.iloc[source_idx]
-                sample[f"{target_column}_lag_1"] = float(source_row[target_column])
-
-            # --- target ---
-            sample["y_true"] = float(target_row[target_column])
-
-            rows.append(sample)
-
-    if not rows:
+    grouped = working.groupby(group_keys, sort=False, observed=True)
+    group_codes = grouped.ngroup().to_numpy()
+    grid_cell_count = int(grouped.ngroups)
+    ordinal = (
+        working["year"].to_numpy(dtype=np.int32) * 12
+        + working["month"].to_numpy(dtype=np.int16)
+        - 1
+    )
+    prior_ordinal = (
+        pd.Series(ordinal)
+        .groupby(
+            [working[column] for column in group_keys],
+            sort=False,
+            observed=True,
+        )
+        .shift(sequence_length)
+        .to_numpy()
+    )
+    positions = grouped.cumcount().to_numpy()
+    valid = (
+        (positions >= sequence_length)
+        & np.isfinite(prior_ordinal)
+        & ((ordinal - prior_ordinal) == sequence_length)
+    )
+    if not valid.any():
         raise ValueError(
             "No forecasting samples were generated. "
             f"Check that grid cells have at least {sequence_length + 1} "
             "consecutive monthly records."
         )
+    selected = np.flatnonzero(valid)
+    selected_working = working.iloc[selected]
+    group_first = grouped[["latitude", "longitude"]].first()
+    grid_labels = [
+        make_grid_id(float(latitude), float(longitude))
+        for latitude, longitude in group_first.itertuples(index=False, name=None)
+    ]
+    selected_grid_ids = pd.Series(
+        np.asarray(grid_labels, dtype=object)[group_codes[selected]],
+        index=selected_working.index,
+    )
+    target_year = selected_working["year"].astype(np.int16)
+    target_month = selected_working["month"].astype(np.int8)
+    samples_df = pd.DataFrame(
+        {
+            "grid_id": selected_grid_ids.to_numpy(),
+            "region": selected_working["region"].astype(str).to_numpy(),
+            "target_year": target_year.to_numpy(),
+            "target_month": target_month.to_numpy(),
+            "latitude": selected_working["latitude"].to_numpy(),
+            "longitude": selected_working["longitude"].to_numpy(),
+        }
+    )
+    samples_df["latitude"] = samples_df["latitude"].astype(np.float32)
+    samples_df["longitude"] = samples_df["longitude"].astype(np.float32)
+    samples_df["sample_id"] = (
+        samples_df["region"]
+        + "_"
+        + samples_df["grid_id"]
+        + "_"
+        + samples_df["target_year"].astype(str)
+        + "_"
+        + samples_df["target_month"].astype(str).str.zfill(2)
+    )
+    samples_df.insert(0, "sample_id", samples_df.pop("sample_id"))
+    climate_types: dict[str, str] = {}
+    for region in samples_df["region"].unique():
+        try:
+            climate_types[region] = registry.get(region).climate_type
+        except KeyError:
+            climate_types[region] = "unknown"
+    samples_df["climate_type"] = samples_df["region"].map(climate_types)
+    samples_df["grid_id"] = samples_df["grid_id"].astype("category")
+    samples_df["region"] = samples_df["region"].astype("category")
+    samples_df["climate_type"] = samples_df["climate_type"].astype("category")
 
-    samples_df = pd.DataFrame(rows)
+    def _month_labels(values: np.ndarray) -> pd.Categorical:
+        unique = np.unique(values)
+        labels = {
+            int(value): f"{int(value) // 12}-{int(value) % 12 + 1:02d}"
+            for value in unique
+        }
+        return pd.Categorical([labels[int(value)] for value in values])
+
+    samples_df["input_window_start"] = _month_labels(
+        ordinal[selected] - sequence_length
+    )
+    samples_df["input_window_end"] = _month_labels(ordinal[selected] - 1)
+    for lag_idx in range(1, sequence_length + 1):
+        shifted = grouped[feature_columns].shift(lag_idx).iloc[selected]
+        for feature in feature_columns:
+            samples_df[f"{feature}_lag_{lag_idx}"] = shifted[
+                feature
+            ].to_numpy(dtype=np.float32)
+    for feature in required_static:
+        samples_df[feature] = selected_working[feature].to_numpy(
+            dtype=np.float32
+        )
+    samples_df[f"{target_column}_lag_1"] = (
+        grouped[target_column]
+        .shift(1)
+        .iloc[selected]
+        .to_numpy(dtype=np.float32)
+    )
+    samples_df["y_true"] = selected_working[target_column].to_numpy(
+        dtype=np.float64
+    )
+    group_sizes = grouped.size()
+    total_dropped = int(
+        group_sizes[group_sizes < sequence_length + 1].sum()
+        + ((positions >= sequence_length) & ~valid).sum()
+    )
 
     # ------------------------------------------------------------------
     # metadata
     # ------------------------------------------------------------------
-    input_start = samples_df["input_window_start"].iloc[0] if len(samples_df) > 0 else ""
-    input_end = samples_df["input_window_end"].iloc[0] if len(samples_df) > 0 else ""
+    input_start = str(samples_df["input_window_start"].iloc[0])
+    input_end = str(samples_df["input_window_end"].iloc[0])
 
     metadata = ForecastingMetadata(
         total_samples=len(samples_df),
