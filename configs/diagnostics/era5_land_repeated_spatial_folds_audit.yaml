@@ -1,0 +1,35 @@
+diagnostic_name: era5_land_repeated_spatial_folds_audit
+input_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023_corrected.csv
+expected_input_sha256: 90067630ca1a8f11b6005026313e1d7f2cb343ddd21fcbf8744bc38806808db7
+split_config_path: configs/splits/repeated_region_stratified_spatial.yaml
+output_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/diagnostics/era5_land_corrected_repeated_spatial_folds_v2
+columns:
+  region: region
+  year: year
+  month: month
+  latitude: latitude
+  longitude: longitude
+  target_source: evaporation
+  target: evaporation_anomaly
+feature_shift_columns:
+  - temperature
+  - precipitation
+  - radiation
+  - soil_moisture
+  - dryness_proxy_log1p
+  - saturation_vapor_pressure
+chunksize: 250000
+safety_max_rows: 6000000
+quantile_sample_stride: 20
+acceptance:
+  min_test_east_china_share: 0.15
+  max_test_east_china_share: 0.60
+  min_validation_east_china_share: 0.15
+  max_validation_east_china_share: 0.60
+  require_each_region_test_grids: true
+  require_each_region_validation_grids: true
+  require_zero_grid_leakage: true
+  require_zero_duplicate_assignment: true
+  require_all_12_months: true
+  min_target_std_vs_fold_median: 0.85
+  max_zero_baseline_rmse_cv: 0.15

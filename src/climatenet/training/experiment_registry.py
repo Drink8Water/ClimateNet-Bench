@@ -18,7 +18,10 @@ class ExperimentRecord:
     """One row in the experiment registry."""
 
     experiment_id: str
+    run_id: str = ""
     benchmark_name: str = ""
+    data_source: str = ""
+    synthetic: bool = False
     model_name: str = ""
     split_protocol: str = ""
     feature_set: str = ""
@@ -26,6 +29,7 @@ class ExperimentRecord:
     test_regions: list[str] = field(default_factory=list)
     train_years: list[int] = field(default_factory=list)
     test_years: list[int] = field(default_factory=list)
+    preprocessing: dict[str, Any] = field(default_factory=dict)
     timestamp: str = ""
     seed: int = 42
     status: str = "pending"  # pending | running | completed | failed
@@ -33,11 +37,15 @@ class ExperimentRecord:
     predictions_path: str = ""
     intervals_path: str = ""
     error_message: str = ""
+    traceback_summary: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "experiment_id": self.experiment_id,
+            "run_id": self.run_id,
             "benchmark_name": self.benchmark_name,
+            "data_source": self.data_source,
+            "synthetic": self.synthetic,
             "model_name": self.model_name,
             "split_protocol": self.split_protocol,
             "feature_set": self.feature_set,
@@ -45,6 +53,7 @@ class ExperimentRecord:
             "test_regions": self.test_regions,
             "train_years": self.train_years,
             "test_years": self.test_years,
+            "preprocessing": self.preprocessing,
             "timestamp": self.timestamp,
             "seed": self.seed,
             "status": self.status,
@@ -52,13 +61,17 @@ class ExperimentRecord:
             "predictions_path": self.predictions_path,
             "intervals_path": self.intervals_path,
             "error_message": self.error_message,
+            "traceback_summary": self.traceback_summary,
         }
 
     @classmethod
     def from_dict(cls, d: dict[str, Any]) -> ExperimentRecord:
         return cls(
             experiment_id=str(d.get("experiment_id", "")),
+            run_id=str(d.get("run_id", "")),
             benchmark_name=str(d.get("benchmark_name", "")),
+            data_source=str(d.get("data_source", "")),
+            synthetic=bool(d.get("synthetic", False)),
             model_name=str(d.get("model_name", "")),
             split_protocol=str(d.get("split_protocol", "")),
             feature_set=str(d.get("feature_set", "")),
@@ -66,6 +79,7 @@ class ExperimentRecord:
             test_regions=list(d.get("test_regions", [])),
             train_years=list(d.get("train_years", [])),
             test_years=list(d.get("test_years", [])),
+            preprocessing=dict(d.get("preprocessing", {})),
             timestamp=str(d.get("timestamp", "")),
             seed=int(d.get("seed", 42)),
             status=str(d.get("status", "pending")),
@@ -73,6 +87,7 @@ class ExperimentRecord:
             predictions_path=str(d.get("predictions_path", "")),
             intervals_path=str(d.get("intervals_path", "")),
             error_message=str(d.get("error_message", "")),
+            traceback_summary=str(d.get("traceback_summary", "")),
         )
 
 
@@ -107,10 +122,16 @@ class ExperimentRegistry:
         if experiment_id in self._experiments:
             self._experiments[experiment_id].status = "completed"
 
-    def mark_failed(self, experiment_id: str, error: str) -> None:
+    def mark_failed(
+        self,
+        experiment_id: str,
+        error: str,
+        traceback_summary: str = "",
+    ) -> None:
         if experiment_id in self._experiments:
             self._experiments[experiment_id].status = "failed"
             self._experiments[experiment_id].error_message = error
+            self._experiments[experiment_id].traceback_summary = traceback_summary
 
     def list_all(self) -> list[ExperimentRecord]:
         return list(self._experiments.values())

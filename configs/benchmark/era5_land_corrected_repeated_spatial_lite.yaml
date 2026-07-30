@@ -1,0 +1,97 @@
+execution_status: benchmarked
+result_status: final_corrected
+runner_integration: manifest_backed_repeated_spatial_adapter
+benchmark_name: ERA5-Land-Sahara-EastChina-corrected-repeated-spatial-lite
+version: "1.0.0"
+dataset_name: ERA5-Land Sahara-EastChina 2019-2023 corrected-accumulated-v1
+dataset_version: CDS monthly means with corrected accumulated patch 2022-09 to 2023-12
+data_source: ERA5-Land corrected
+synthetic: false
+input_data_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023_corrected.csv
+features_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023_corrected.csv
+expected_features_sha256: 90067630ca1a8f11b6005026313e1d7f2cb343ddd21fcbf8744bc38806808db7
+fold_audit_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/diagnostics/era5_land_corrected_repeated_spatial_folds_v2/fold_balance_summary.json
+fold_manifest_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/diagnostics/era5_land_corrected_repeated_spatial_folds_v2/fold_manifests
+required_fold_audit_status: ready
+output_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs
+
+target: evaporation_anomaly
+target_column: y_true
+input_window: 6
+random_seed: 42
+fold_count: 5
+expected_task_count: 10
+memory_efficient_split_cache: true
+
+repeated_spatial:
+  audit_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/diagnostics/era5_land_corrected_repeated_spatial_folds_v2/fold_balance_summary.json
+  manifest_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/diagnostics/era5_land_corrected_repeated_spatial_folds_v2/fold_manifests
+  required_audit_status: ready
+  folds: [0, 1, 2, 3, 4]
+  block_size_deg: 5.0
+  generation_seed: 42
+
+preprocessing:
+  train_only: true
+  climatology: region_month_mean
+  unseen_region_fallback: train_global_month_mean_then_train_global_mean
+  standardize_features: true
+  event_thresholds: train_monthly_percentiles
+
+split_protocols:
+  - repeated_region_stratified_spatial
+
+feature_sets:
+  full:
+    description: Train-only lag anomalies and stable row-wise physics
+    features:
+      - latitude
+      - longitude
+      - month_sin
+      - month_cos
+      - temperature_anomaly
+      - precipitation_anomaly
+      - radiation_anomaly
+      - soil_moisture_anomaly
+      - wind_speed
+      - dryness_proxy_log1p
+      - saturation_vapor_pressure
+
+models:
+  - name: linear_regression
+    params:
+      alpha: 1.0
+  - name: lightgbm
+    params:
+      n_estimators: 100
+      learning_rate: 0.05
+      num_leaves: 31
+      n_jobs: 4
+
+metrics:
+  primary: [mae, rmse, r2]
+  skill_scores: [skill_vs_zero_anomaly_climatology]
+  aggregation: fold_mean_std
+
+artifacts:
+  compatibility_predictions: false
+  predictions: canonical_only
+  prediction_columns:
+    - sample_id
+    - y_true
+    - y_pred
+    - partition
+    - model_name
+    - region
+    - target_year
+    - target_month
+    - fold
+  prediction_float_format: "%.7g"
+  estimated_max_bytes: 8000000000
+  estimated_total_bytes: 7700000000
+  estimate_basis: >
+    Five prepared split caches about 5.9GB, five split manifests about 0.8GB,
+    ten canonical prediction files about 0.8GB, plus bounded metadata.
+  note: >
+    Recommended policy only. Preserve one canonical prediction artifact per
+    model/fold and do not create compatibility copies.

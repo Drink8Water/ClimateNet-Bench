@@ -1,0 +1,19 @@
+protocol: repeated_region_stratified_spatial
+split_id: repeated_region_stratified_spatial
+fold_count: 5
+block_size_deg: 5.0
+test_fraction_per_region: 0.20
+validation_fraction_per_region: 0.20
+random_seed: 42
+group_key: [region, latitude, longitude]
+stratify_by: region
+assignment_method: geographic_interleaving_with_rotating_validation
+no_grid_cell_overlap: true
+all_months_follow_grid_cell: true
+note: >
+  Within each region, spatial blocks are traversed by latitude band with
+  alternating longitude direction and interleaved across five test bins.
+  This spreads each fold over the regional domain without inspecting target
+  values. Fold k uses bin k for test and bin k+1 for validation. Every block
+  is test once, validation once, and train three times. This protocol is
+  currently audit-only and is not registered in the formal benchmark runner.

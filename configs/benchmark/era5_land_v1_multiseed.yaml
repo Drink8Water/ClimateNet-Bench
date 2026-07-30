@@ -1,0 +1,104 @@
+# Bounded multi-seed robustness extension of ERA5-Land v1.
+# Aggregate matrix: 3 seeds x 2 models x 1 feature set x 3 splits = 18 tasks.
+# Retained for provenance only: its accumulated source variables are invalid.
+result_status: source_data_invalid
+benchmark_name: ERA5-Land-Sahara-EastChina-v1-multiseed
+version: "1.0.0"
+dataset_name: ERA5-Land Sahara-EastChina monthly
+dataset_version: CDS reanalysis-era5-land-monthly-means 2019-2023
+data_source: ERA5-Land
+synthetic: false
+features_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023.csv
+preflight_audit_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_full_2019_2023_readiness_v2.json
+physical_features_audit_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_physical_features_full_2019_2023_audit.json
+code_snapshot_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_land_v1_multiseed_code_snapshot
+output_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs
+summary_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs/era5_land_v1_multiseed_summary
+
+random_seed: 42
+random_seeds: [42, 123, 2026]
+expected_tasks_per_seed: 6
+expected_total_tasks: 18
+memory_efficient_split_cache: true
+
+# Seed 42 is scientifically identical for the selected full tasks and is
+# reused instead of duplicating its 4.93 GB audited v1 run.
+existing_seed_runs:
+  "42": /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs/era5-land-sahara-eastchina-v1-era5-land-20260730T012055094403Z-8cfe21a0-4e68b2
+
+target: evaporation_anomaly
+target_column: y_true
+input_window: 6
+
+preprocessing:
+  train_only: true
+  climatology: region_month_mean
+  unseen_region_fallback: train_global_month_mean_then_train_global_mean
+  standardize_features: true
+  event_thresholds: train_monthly_percentiles
+
+split_protocols:
+  - random_split
+  - temporal_holdout
+  - spatial_block_holdout
+
+feature_sets:
+  full:
+    description: Train-only anomalies and stable row-wise physical predictors
+    features:
+      - latitude
+      - longitude
+      - month_sin
+      - month_cos
+      - temperature_anomaly
+      - precipitation_anomaly
+      - radiation_anomaly
+      - soil_moisture_anomaly
+      - wind_speed
+      - dryness_proxy_log1p
+      - saturation_vapor_pressure
+
+models:
+  - name: linear_regression
+    params:
+      alpha: 1.0
+  - name: lightgbm
+    params:
+      n_estimators: 100
+      learning_rate: 0.05
+      num_leaves: 31
+      n_jobs: 4
+
+metrics:
+  primary: [mae, rmse, r2]
+  skill_scores: [skill_vs_zero_anomaly_climatology]
+  generalization: [ood_degradation]
+
+artifacts:
+  compatibility_predictions: false
+  prediction_columns:
+    - sample_id
+    - y_true
+    - y_pred
+    - partition
+    - region
+    - target_year
+    - target_month
+    - split_protocol
+    - feature_set
+  prediction_float_format: "%.7g"
+  estimated_new_run_bytes: 8000000000
+  estimated_aggregate_bytes_including_reused_seed: 13000000000
+  estimated_max_bytes: 15000000000
+  note: Canonical predictions only; compatibility prediction copies disabled.
+
+quality_policy:
+  dryness_proxy:
+    raw_column_role: audit_only
+    model_column: dryness_proxy_log1p
+    transform: row_wise_log1p_no_fitted_statistics
+  negative_evaporation:
+    policy: retain_and_record
+  climate_zone:
+    status: not_mapped
+    climate_zone_transfer_enabled: false

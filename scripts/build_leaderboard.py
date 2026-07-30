@@ -8,8 +8,8 @@ Usage
     python scripts/build_leaderboard.py
 
     python scripts/build_leaderboard.py \\
-        --experiments-dir outputs/benchmark/experiments \\
-        --output-dir outputs/benchmark
+        --experiments-dir outputs/benchmark_runs/<run-id>/experiments \\
+        --output-dir outputs/benchmark_runs/<run-id>
 """
 
 from __future__ import annotations
@@ -38,13 +38,18 @@ def main() -> None:
     )
     parser.add_argument(
         "--experiments-dir",
-        default="outputs/benchmark/experiments",
-        help="Directory containing experiment subdirectories",
+        default="outputs/benchmark_runs",
+        help="Run directory, experiments directory, or benchmark root",
     )
     parser.add_argument(
         "--output-dir",
-        default="outputs/benchmark",
+        default="outputs/benchmark_runs",
         help="Directory for leaderboard output files",
+    )
+    parser.add_argument(
+        "--run-id",
+        default=None,
+        help="Explicit run ID; defaults to the latest isolated run",
     )
     args = parser.parse_args()
 
@@ -52,6 +57,7 @@ def main() -> None:
     result = build_leaderboard(
         experiments_root=args.experiments_dir,
         output_root=args.output_dir,
+        run_id=args.run_id,
     )
 
     if not result:

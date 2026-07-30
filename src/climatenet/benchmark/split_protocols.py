@@ -635,7 +635,12 @@ def validate_split(
     errors.extend(_check_ids_exist(df, result))
 
     # --- protocol-specific checks ---
-    if result.protocol in ("spatial_block", "spatial", "spatial_holdout"):
+    if result.protocol in (
+        "spatial_block",
+        "spatial",
+        "spatial_holdout",
+        "repeated_region_stratified_spatial",
+    ):
         errors.extend(_check_spatial_disjoint(df, result))
     elif result.protocol == "temporal":
         errors.extend(_check_temporal_disjoint(df, result))
@@ -806,8 +811,9 @@ def generate_all_splits(
     df: pd.DataFrame,
     output_root: str | Path,
     configs: dict[str, dict[str, Any]] | None = None,
+    protocols: list[str] | None = None,
 ) -> list[SplitResult]:
-    """Generate all six benchmark split protocols and save to disk.
+    """Generate selected benchmark split protocols and save them to disk.
 
     Parameters
     ----------
@@ -820,6 +826,9 @@ def generate_all_splits(
     configs
         Optional per-protocol config dict keyed by protocol name.
         If not provided, sensible defaults are used.
+    protocols
+        Internal protocol names to generate.  Defaults to all protocols.
+        Unknown names raise :class:`ValueError`.
 
     Returns
     -------
@@ -830,66 +839,80 @@ def generate_all_splits(
     else:
         configs = {**_default_split_configs(df), **configs}
 
+    selected = ALL_SPLIT_NAMES if protocols is None else list(protocols)
+    unknown = [name for name in selected if name not in ALL_SPLIT_NAMES]
+    if unknown:
+        raise ValueError(
+            f"Unknown split protocol(s): {unknown}. "
+            f"Supported internal names: {ALL_SPLIT_NAMES}"
+        )
+
     root = Path(output_root)
     results: list[SplitResult] = []
 
     # 1 — random
-    cfg = configs.get("random", {})
-    r = make_random_split(df, **{k: v for k, v in cfg.items() if k != "split_id"})
-    save_split_result(r, root / r.split_id)
-    results.append(r)
+    if "random" in selected:
+        cfg = configs.get("random", {})
+        r = make_random_split(df, **{k: v for k, v in cfg.items() if k != "split_id"})
+        save_split_result(r, root / r.split_id)
+        results.append(r)
 
     # 2 — spatial_block
-    cfg = configs.get("spatial_block", {})
-    r = make_spatial_block_split(df, **{k: v for k, v in cfg.items() if k != "split_id"})
-    save_split_result(r, root / r.split_id)
-    results.append(r)
+    if "spatial_block" in selected:
+        cfg = configs.get("spatial_block", {})
+        r = make_spatial_block_split(df, **{k: v for k, v in cfg.items() if k != "split_id"})
+        save_split_result(r, root / r.split_id)
+        results.append(r)
 
     # 3 — temporal
-    cfg = configs.get("temporal", {})
-    r = make_temporal_split(df, **{k: v for k, v in cfg.items() if k != "split_id"})
-    save_split_result(r, root / r.split_id)
-    results.append(r)
+    if "temporal" in selected:
+        cfg = configs.get("temporal", {})
+        r = make_temporal_split(df, **{k: v for k, v in cfg.items() if k != "split_id"})
+        save_split_result(r, root / r.split_id)
+        results.append(r)
 
     # 4 — region_transfer (one per pair)
-    rt_cfg = configs.get("region_transfer", {})
-    pairs = rt_cfg.pop("pairs", None)
-    if pairs is None:
-        pairs = _default_region_pairs(df)
-    for i, pair in enumerate(pairs):
-        sp_id = f"region_transfer_{i}"
-        r = make_region_transfer_split(
-            df,
-            train_regions=pair["train_regions"],
-            test_regions=pair["test_regions"],
-            **{k: v for k, v in rt_cfg.items() if k not in ("pairs", "split_id")},
-            split_id=sp_id,
-        )
-        save_split_result(r, root / r.split_id)
-        results.append(r)
+    if "region_transfer" in selected:
+        rt_cfg = configs.get("region_transfer", {})
+        pairs = rt_cfg.get("pairs")
+        if pairs is None:
+            pairs = _default_region_pairs(df)
+        for i, pair in enumerate(pairs):
+            sp_id = f"region_transfer_{i}"
+            r = make_region_transfer_split(
+                df,
+                train_regions=pair["train_regions"],
+                test_regions=pair["test_regions"],
+                **{k: v for k, v in rt_cfg.items() if k not in ("pairs", "split_id")},
+                split_id=sp_id,
+            )
+            save_split_result(r, root / r.split_id)
+            results.append(r)
 
     # 5 — climate_zone_transfer (one per pair)
-    cz_cfg = configs.get("climate_zone_transfer", {})
-    cz_pairs = cz_cfg.pop("pairs", None)
-    if cz_pairs is None:
-        cz_pairs = _default_climate_zone_pairs(df)
-    for i, pair in enumerate(cz_pairs):
-        sp_id = f"climate_zone_transfer_{i}"
-        r = make_climate_zone_transfer_split(
-            df,
-            train_zones=pair["train_zones"],
-            test_zones=pair["test_zones"],
-            **{k: v for k, v in cz_cfg.items() if k not in ("pairs", "split_id")},
-            split_id=sp_id,
-        )
-        save_split_result(r, root / r.split_id)
-        results.append(r)
+    if "climate_zone_transfer" in selected:
+        cz_cfg = configs.get("climate_zone_transfer", {})
+        cz_pairs = cz_cfg.get("pairs")
+        if cz_pairs is None:
+            cz_pairs = _default_climate_zone_pairs(df)
+        for i, pair in enumerate(cz_pairs):
+            sp_id = f"climate_zone_transfer_{i}"
+            r = make_climate_zone_transfer_split(
+                df,
+                train_zones=pair["train_zones"],
+                test_zones=pair["test_zones"],
+                **{k: v for k, v in cz_cfg.items() if k not in ("pairs", "split_id")},
+                split_id=sp_id,
+            )
+            save_split_result(r, root / r.split_id)
+            results.append(r)
 
     # 6 — spatiotemporal
-    cfg = configs.get("spatiotemporal", {})
-    r = make_spatiotemporal_split(df, **{k: v for k, v in cfg.items() if k != "split_id"})
-    save_split_result(r, root / r.split_id)
-    results.append(r)
+    if "spatiotemporal" in selected:
+        cfg = configs.get("spatiotemporal", {})
+        r = make_spatiotemporal_split(df, **{k: v for k, v in cfg.items() if k != "split_id"})
+        save_split_result(r, root / r.split_id)
+        results.append(r)
 
     return results
 

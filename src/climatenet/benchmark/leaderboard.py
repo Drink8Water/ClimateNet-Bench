@@ -17,6 +17,8 @@ logger = logging.getLogger(__name__)
 # Columns expected in leaderboard output
 LEADERBOARD_COLUMNS = [
     "rank",
+    "run_id",
+    "data_source",
     "model_name",
     "split_protocol",
     "feature_set",
@@ -35,6 +37,7 @@ LEADERBOARD_COLUMNS = [
 def build_leaderboard(
     experiments_root: str | Path,
     output_root: str | Path | None = None,
+    run_id: str | None = None,
 ) -> dict[str, pd.DataFrame]:
     """Scan experiment directories and produce benchmark tables.
 
@@ -45,6 +48,10 @@ def build_leaderboard(
         ``metrics.json``, ``predictions.csv``, etc.).
     output_root
         If provided, CSV files are written here.
+    run_id
+        Run to aggregate. When omitted and multiple run IDs are present,
+        only the most recently created run is selected. Legacy metrics
+        without a run ID remain supported when no run-aware metrics exist.
 
     Returns
     -------
@@ -59,12 +66,8 @@ def build_leaderboard(
 
     # ── 1. Collect all metrics ────────────────────────────────────
     rows: list[dict[str, Any]] = []
-    for exp_dir in sorted(root.iterdir()):
-        if not exp_dir.is_dir():
-            continue
-        metrics_path = exp_dir / "metrics.json"
-        if not metrics_path.exists():
-            continue
+    for metrics_path in sorted(root.rglob("metrics.json")):
+        exp_dir = metrics_path.parent
         try:
             with metrics_path.open("r", encoding="utf-8") as f:
                 m = json.load(f)
@@ -91,6 +94,57 @@ def build_leaderboard(
         logger.warning("No experiment metrics found in %s", root)
         return {}
 
+    known_run_ids = sorted(
+        {
+            str(row["run_id"])
+            for row in rows
+            if row.get("run_id") not in (None, "")
+        }
+    )
+    selected_run_id = run_id
+    if selected_run_id is not None:
+        rows = [
+            row for row in rows
+            if str(row.get("run_id", "")) == selected_run_id
+        ]
+        if not rows:
+            raise ValueError(f"No experiment metrics found for run_id={selected_run_id!r}")
+    elif known_run_ids:
+        # Never mix run-aware results with history. ISO UTC timestamps sort
+        # chronologically, with run_id as a deterministic tie-breaker.
+        selected_run_id = max(
+            known_run_ids,
+            key=lambda candidate: max(
+                (
+                    str(row.get("run_created_at", "")),
+                    candidate,
+                )
+                for row in rows
+                if str(row.get("run_id", "")) == candidate
+            ),
+        )
+        rows = [
+            row for row in rows
+            if str(row.get("run_id", "")) == selected_run_id
+        ]
+        if len(known_run_ids) > 1:
+            logger.info(
+                "Selected latest run %s; ignored %d historical run(s)",
+                selected_run_id,
+                len(known_run_ids) - 1,
+            )
+
+    data_sources = {
+        str(row["data_source"])
+        for row in rows
+        if row.get("data_source") not in (None, "")
+    }
+    if len(data_sources) > 1:
+        raise ValueError(
+            "Leaderboard cannot mix data sources within one run: "
+            f"{sorted(data_sources)}"
+        )
+
     all_results = pd.DataFrame(rows)
 
     # ── 2. Compute skill scores ───────────────────────────────────
@@ -113,34 +167,47 @@ def build_leaderboard(
                 sub["skill_score"],
             ))
             col_name = f"skill_vs_{baseline}"
-            all_results[col_name] = all_results.apply(
+            computed = all_results.apply(
                 lambda r: skill_map.get(
                     f"{r['model_name']}|{r['split_protocol']}"
                 ),
                 axis=1,
             )
+            if col_name in all_results.columns:
+                all_results[col_name] = computed.combine_first(
+                    pd.to_numeric(all_results[col_name], errors="coerce")
+                )
+            else:
+                all_results[col_name] = computed
 
     # ── 3. OOD degradation ────────────────────────────────────────
-    from climatenet.evaluation.ood_degradation import compute_ood_degradation_table
-
     if "split_protocol" in all_results.columns:
         try:
-            ood_df = compute_ood_degradation_table(
-                all_results,
-                reference_split="random",
-                model_col="model_name",
-                split_col="split_protocol",
-                rmse_col="rmse",
+            # Compare like with like. Feature-set variants of the same model
+            # must not overwrite each other's random-split reference.
+            comparison_columns = ["model_name"]
+            if "feature_set" in all_results.columns:
+                comparison_columns.append("feature_set")
+            references = (
+                all_results[all_results["split_protocol"] == "random"]
+                .groupby(comparison_columns, dropna=False)["rmse"]
+                .mean()
             )
-            ood_map = dict(zip(
-                ood_df["model_name"] + "|" + ood_df["ood_split"],
-                ood_df["ood_degradation"],
-            ))
+            def degradation(row: pd.Series) -> float:
+                if row["split_protocol"] == "random":
+                    return float("nan")
+                key: Any = (
+                    tuple(row[column] for column in comparison_columns)
+                    if len(comparison_columns) > 1
+                    else row[comparison_columns[0]]
+                )
+                reference = references.get(key)
+                if reference is None or pd.isna(reference) or reference == 0:
+                    return float("nan")
+                return float((row["rmse"] - reference) / reference)
+
             all_results["ood_degradation"] = all_results.apply(
-                lambda r: ood_map.get(
-                    f"{r['model_name']}|{r['split_protocol']}"
-                ),
-                axis=1,
+                degradation, axis=1
             )
         except Exception:
             pass

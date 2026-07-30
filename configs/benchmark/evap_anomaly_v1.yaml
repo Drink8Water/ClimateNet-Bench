@@ -7,12 +7,26 @@
 
 benchmark_name: EvapAnomaly-Forecast-v1
 version: "1.0.0"
+dataset_name: ERA5-Land monthly averaged reanalysis
+dataset_version: CDS reanalysis-era5-land-monthly-means
 data_source: ERA5-Land
+synthetic: false
+# This must be produced from real ERA5 records with row-wise physical features
+# only. Never point the formal config at the repository synthetic features.csv.
+features_path: data/processed/era5_physical_features.csv
 temporal_resolution: monthly
 forecast_horizon: 1 month
 input_window: 6 months
 target: evaporation_anomaly
+target_column: y_true
 random_seed: 42
+
+preprocessing:
+  train_only: true
+  climatology: region_month_mean
+  unseen_region_fallback: train_global_month_mean_then_train_global_mean
+  standardize_features: true
+  event_thresholds: train_monthly_percentiles
 
 # ---------------------------------------------------------------------------
 # Benchmark regions
@@ -75,16 +89,16 @@ era5_variables:
     description: 2-metre air temperature (monthly mean)
   - name: precipitation
     era5_name: total_precipitation
-    unit: m
-    description: Total monthly precipitation
+    unit: m/day
+    description: Monthly mean of daily accumulation; converted to mm/month
   - name: radiation
     era5_name: surface_solar_radiation_downwards
-    unit: J m-2
-    description: Surface solar radiation downwards (monthly mean)
+    unit: J m-2/day
+    description: Monthly mean of daily accumulation; converted to MJ m-2/month
   - name: evaporation
     era5_name: total_evaporation
-    unit: m of water
-    description: Total monthly evaporation (target variable raw)
+    unit: m/day of water equivalent
+    description: Negative upward daily accumulation; converted to positive mm/month
   - name: soil_moisture
     era5_name: volumetric_soil_water_layer_1
     unit: m3 m-3
@@ -250,5 +264,5 @@ time_range:
 # Output
 # ---------------------------------------------------------------------------
 output:
-  root: outputs/benchmark
+  root: outputs/benchmark_runs
   experiment_prefix: evap_anomaly_v1

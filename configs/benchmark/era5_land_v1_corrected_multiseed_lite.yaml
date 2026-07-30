@@ -1,0 +1,105 @@
+# Corrected multi-seed robustness extension of ERA5-Land v1-lite.
+# Matrix: 3 seeds x 2 models x 1 feature set x 3 splits = 18 tasks.
+# Seed 42 reuses the completed corrected v1 run and selects its full feature rows.
+execution_status: benchmarked
+result_status: final_corrected
+benchmark_name: ERA5-Land-Sahara-EastChina-corrected-v1-lite-multiseed
+version: "1.0.0-corrected-lite"
+dataset_name: ERA5-Land Sahara-EastChina 2019-2023 corrected-accumulated-v1
+dataset_version: CDS monthly means with corrected accumulated patch 2022-09 to 2023-12
+data_source: ERA5-Land corrected
+synthetic: false
+input_data_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023_corrected.csv
+features_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023_corrected.csv
+expected_features_sha256: 90067630ca1a8f11b6005026313e1d7f2cb343ddd21fcbf8744bc38806808db7
+preflight_audit_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_corrected_full_2019_2023_audit.json
+required_preflight_audit_status: ready
+output_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs
+summary_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs/era5_land_v1_corrected_multiseed_lite_summary
+
+random_seed: 42
+random_seeds: [42, 123, 2026]
+expected_tasks_per_seed: 6
+expected_total_tasks: 18
+memory_efficient_split_cache: true
+
+existing_seed_runs:
+  "42": /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs/era5-land-sahara-eastchina-corrected-v1-era5-land-corrected-20260730T064523304383Z-348c8f24-2b3cf0
+
+target: evaporation_anomaly
+target_column: y_true
+input_window: 6
+
+preprocessing:
+  train_only: true
+  climatology: region_month_mean
+  unseen_region_fallback: train_global_month_mean_then_train_global_mean
+  standardize_features: true
+  event_thresholds: train_monthly_percentiles
+
+split_protocols:
+  - random_split
+  - temporal_holdout
+  - spatial_block_holdout
+
+feature_sets:
+  full:
+    description: Base plus train-only anomalies and stable row-wise physics
+    features:
+      - latitude
+      - longitude
+      - month_sin
+      - month_cos
+      - temperature_anomaly
+      - precipitation_anomaly
+      - radiation_anomaly
+      - soil_moisture_anomaly
+      - wind_speed
+      - dryness_proxy_log1p
+      - saturation_vapor_pressure
+
+models:
+  - name: linear_regression
+    params:
+      alpha: 1.0
+  - name: lightgbm
+    params:
+      n_estimators: 100
+      learning_rate: 0.05
+      num_leaves: 31
+      n_jobs: 4
+
+metrics:
+  primary: [mae, rmse, r2]
+  skill_scores: [skill_vs_zero_anomaly_climatology]
+  generalization: [ood_degradation]
+
+artifacts:
+  compatibility_predictions: false
+  prediction_columns:
+    - sample_id
+    - y_true
+    - y_pred
+    - partition
+    - region
+    - target_year
+    - target_month
+    - split_protocol
+    - feature_set
+  prediction_float_format: "%.7g"
+  estimated_new_run_bytes: 8000000000
+  estimated_aggregate_bytes_including_reused_seed: 13000000000
+  estimated_max_bytes: 15000000000
+  estimate_basis: Reuse completed corrected seed 42 run; execute only seeds 123 and 2026 with full feature set.
+  note: Canonical predictions only; compatibility prediction copies disabled.
+
+quality_policy:
+  dryness_proxy:
+    raw_column_role: audit_only
+    model_column: dryness_proxy_log1p
+    transform: row_wise_log1p_no_fitted_statistics
+  negative_evaporation:
+    policy: retain_and_record
+  climate_zone:
+    status: not_mapped
+    climate_zone_transfer_enabled: false

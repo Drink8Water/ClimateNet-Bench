@@ -1,0 +1,103 @@
+# First bounded benchmark on the corrected ERA5-Land accumulated variables.
+# Exactly 12 tasks: 2 models x 3 splits x 2 feature sets x 1 seed.
+execution_status: benchmarked
+result_status: final_corrected
+benchmark_name: ERA5-Land-Sahara-EastChina-corrected-v1
+version: "1.0.0-corrected"
+dataset_name: ERA5-Land Sahara-EastChina 2019-2023 corrected-accumulated-v1
+dataset_version: CDS monthly means with corrected accumulated patch 2022-09 to 2023-12
+data_source: ERA5-Land corrected
+synthetic: false
+input_data_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023_corrected.csv
+features_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023_corrected.csv
+expected_features_sha256: 90067630ca1a8f11b6005026313e1d7f2cb343ddd21fcbf8744bc38806808db7
+preflight_audit_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_corrected_full_2019_2023_audit.json
+required_preflight_audit_status: ready
+output_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs
+
+target: evaporation_anomaly
+target_column: y_true
+input_window: 6
+random_seed: 42
+memory_efficient_split_cache: true
+
+preprocessing:
+  train_only: true
+  climatology: region_month_mean
+  unseen_region_fallback: train_global_month_mean_then_train_global_mean
+  standardize_features: true
+  event_thresholds: train_monthly_percentiles
+
+split_protocols:
+  - random_split
+  - temporal_holdout
+  - spatial_block_holdout
+
+feature_sets:
+  base:
+    description: Spatial coordinates and target-calendar encoding
+    features:
+      - latitude
+      - longitude
+      - month_sin
+      - month_cos
+  full:
+    description: Base plus train-only anomalies and stable row-wise physics
+    features:
+      - latitude
+      - longitude
+      - month_sin
+      - month_cos
+      - temperature_anomaly
+      - precipitation_anomaly
+      - radiation_anomaly
+      - soil_moisture_anomaly
+      - wind_speed
+      - dryness_proxy_log1p
+      - saturation_vapor_pressure
+
+models:
+  - name: linear_regression
+    params:
+      alpha: 1.0
+  - name: lightgbm
+    params:
+      n_estimators: 100
+      learning_rate: 0.05
+      num_leaves: 31
+      n_jobs: 4
+
+metrics:
+  primary: [mae, rmse, r2]
+  skill_scores: [skill_vs_zero_anomaly_climatology]
+  generalization: [ood_degradation]
+
+artifacts:
+  compatibility_predictions: false
+  prediction_columns:
+    - sample_id
+    - y_true
+    - y_pred
+    - partition
+    - region
+    - target_year
+    - target_month
+    - split_protocol
+    - feature_set
+  prediction_float_format: "%.7g"
+  estimated_max_bytes: 10000000000
+  estimated_prediction_bytes: 1000000000
+  estimated_total_run_bytes: 5000000000
+  estimate_basis: Prior 12-task v1 used 4.6 GiB including three prepared split caches; canonical predictions only.
+  note: Canonical predictions only; compatibility prediction copies disabled.
+
+quality_policy:
+  dryness_proxy:
+    raw_column_role: audit_only
+    model_column: dryness_proxy_log1p
+    transform: row_wise_log1p_no_fitted_statistics
+  negative_evaporation:
+    policy: retain_and_record
+  climate_zone:
+    status: not_mapped
+    climate_zone_transfer_enabled: false

@@ -5,14 +5,23 @@
 #
 # Longitude convention: degrees east (negative = west, positive = east).
 
+result_status: smoke_only
 benchmark_name: EvapAnomaly-Forecast-v1-smoke
 version: "1.0.0"
 data_source: synthetic
 temporal_resolution: monthly
 forecast_horizon: 1 month
 input_window: 6 months
-target: y_true
+target: evaporation_anomaly
+target_column: y_true
 random_seed: 42
+
+preprocessing:
+  train_only: true
+  climatology: region_month_mean
+  unseen_region_fallback: train_global_month_mean_then_train_global_mean
+  standardize_features: true
+  event_thresholds: train_monthly_percentiles
 
 # ---------------------------------------------------------------------------
 # Smoke test regions — subset of full benchmark regions
@@ -117,5 +126,5 @@ smoke_test:
   demo_data_label: "SYNTHETIC_DEMO_DATA — NOT REAL CLIMATE DATA"
 
 output:
-  root: outputs/benchmark
+  root: outputs/benchmark_runs
   experiment_prefix: smoke_test

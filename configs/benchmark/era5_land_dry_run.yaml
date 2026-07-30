@@ -1,0 +1,82 @@
+# Guarded real ERA5-Land plumbing validation.
+# This is not a formal benchmark configuration and must not be reported as one.
+result_status: diagnostic_only
+benchmark_name: EvapAnomaly-ERA5-Land-dry-run
+version: "dry-run-v1"
+dataset_name: ERA5-Land monthly averaged reanalysis
+dataset_version: CDS reanalysis-era5-land-monthly-means
+data_source: ERA5-Land-dry-run
+synthetic: false
+dry_run: true
+
+target: evaporation_anomaly
+target_column: y_true
+input_window: 6
+random_seed: 42
+
+real_data:
+  netcdf_paths:
+    - data/raw/era5_land/era5_land_sahara_2019_2021_all_months.nc
+  region: Sahara
+  start: "2019-01"
+  end: "2021-12"
+  # Small interior subset crossing three 5-degree longitude blocks, allowing
+  # both random and spatial_block split validation with only ~212 grid cells.
+  bbox:
+    latitude: [20.0, 20.3]
+    longitude: [-0.1, 5.1]
+  max_grid_cells: 250
+  max_input_bytes: 104857600
+
+preprocessing:
+  train_only: true
+  climatology: region_month_mean
+  unseen_region_fallback: train_global_month_mean_then_train_global_mean
+  standardize_features: true
+  event_thresholds: train_monthly_percentiles
+
+regions:
+  - name: Sahara
+    lat_min: 15.0
+    lat_max: 30.0
+    lon_min: -20.0
+    lon_max: 30.0
+    climate_type: arid
+    description: Small real-data plumbing validation subset only.
+
+feature_sets:
+  base:
+    features: [latitude, longitude, month_sin, month_cos]
+  full:
+    features:
+      - latitude
+      - longitude
+      - month_sin
+      - month_cos
+      - temperature_anomaly
+      - precipitation_anomaly
+      - radiation_anomaly
+      - soil_moisture_anomaly
+      - wind_speed
+      - dryness_proxy
+      - saturation_vapor_pressure
+
+split_protocols:
+  - random_split
+  - spatial_block_holdout
+
+models:
+  - name: linear_regression
+  - name: random_forest
+    params:
+      n_estimators: 25
+      min_samples_leaf: 3
+      n_jobs: 1
+
+metrics:
+  primary: [mae, rmse, r2]
+  generalization: [ood_degradation]
+
+output:
+  root: outputs/benchmark_runs
+  experiment_prefix: era5_land_dry_run

@@ -195,3 +195,30 @@ class TestLeaderboard:
             assert (out / "all_results.csv").exists()
             assert (out / "leaderboard.csv").exists()
             assert (out / "split_difficulty_analysis.csv").exists()
+
+    def test_same_run_cannot_mix_data_sources(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            _make_fake_experiment_dir(
+                root, "synthetic", "rf", "random", rmse=0.5
+            )
+            _make_fake_experiment_dir(
+                root, "era5", "rf", "random", rmse=0.6
+            )
+            for exp_id, data_source in [
+                ("synthetic", "synthetic"),
+                ("era5", "ERA5-Land"),
+            ]:
+                metrics_path = root / exp_id / "metrics.json"
+                metrics = json.loads(metrics_path.read_text(encoding="utf-8"))
+                metrics.update(
+                    {
+                        "run_id": "corrupt-shared-run",
+                        "run_created_at": "2026-01-01T00:00:00+00:00",
+                        "data_source": data_source,
+                    }
+                )
+                metrics_path.write_text(json.dumps(metrics), encoding="utf-8")
+
+            with pytest.raises(ValueError, match="cannot mix data sources"):
+                build_leaderboard(root)
