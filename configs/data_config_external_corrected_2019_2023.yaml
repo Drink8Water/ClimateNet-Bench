@@ -1,0 +1,67 @@
+# Corrected ERA5-Land full dataset.
+# Accumulated variables for 2022-09..2023-12 come from the audited mnth/00 patch.
+
+dataset_name: ERA5-Land Sahara-EastChina
+dataset_version: 2019-2023-corrected-accumulated-patch-v1
+data_source: ERA5-Land-corrected
+result_status: final_corrected
+input_data_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_climate_data_full_2019_2023_corrected.csv
+features_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023_corrected.csv
+physical_features_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023_corrected.csv
+target_column: evaporation_anomaly
+region_column: region
+spatial_columns: [latitude, longitude]
+time_columns: [year, month]
+required_raw_columns:
+  - region
+  - year
+  - month
+  - latitude
+  - longitude
+  - temperature
+  - precipitation
+  - radiation
+  - soil_moisture
+  - u_wind
+  - v_wind
+  - evaporation
+
+corrected_merge:
+  replaced_variables: [ssrd, tp, e]
+  replaced_periods:
+    "2022": ["09", "10", "11", "12"]
+    "2023": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+  time_handling: match_by_year_month_preserve_old_full_time_coordinate
+  regions:
+    Sahara:
+      old_full: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land/era5_land_sahara_2019_2023_all_months.nc
+      patch: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land_patch_hourly_monthly_202209_202312/era5_land_sahara_202209_202312_accumulated_patch_hourly_monthly_00.nc
+      output: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land_corrected/era5_land_sahara_2019_2023_corrected_accumulated.nc
+    East China:
+      old_full: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land/era5_land_east_china_2019_2023_all_months.nc
+      patch: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land_patch_hourly_monthly_202209_202312/era5_land_east_china_202209_202312_accumulated_patch_hourly_monthly_00.nc
+      output: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land_corrected/era5_land_east_china_2019_2023_corrected_accumulated.nc
+
+provenance:
+  old_product_type: monthly_averaged_reanalysis
+  patch_product_type: monthly_averaged_reanalysis_by_hour_of_day
+  patch_time: "00:00"
+  known_issue_period: 2022-09 through 2024-02
+  patch_audit: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_accumulated_patch_202209_202312_audit.json
+  old_processed_csv: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_climate_data_full_2019_2023.csv
+  old_physical_features_csv: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023.csv
+
+era5:
+  dataset_name: reanalysis-era5-land-monthly-means
+  raw_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land_corrected
+  processed_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_climate_data_full_2019_2023_corrected.csv
+  stream_output: true
+  input_files:
+    - /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land_corrected/era5_land_sahara_2019_2023_corrected_accumulated.nc
+    - /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land_corrected/era5_land_east_china_2019_2023_corrected_accumulated.nc
+  raw_audit_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_corrected_raw_2019_2023_audit.json
+  processed_audit_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_corrected_processed_2019_2023_audit.json
+
+physical_features_audit_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_corrected_physical_2019_2023_audit.json
+corrected_full_audit_json: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_corrected_full_2019_2023_audit.json
+corrected_full_audit_markdown: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_corrected_full_2019_2023_audit.md

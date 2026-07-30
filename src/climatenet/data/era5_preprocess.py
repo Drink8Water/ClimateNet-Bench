@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import gc
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -78,36 +80,128 @@ def convert_units(data: pd.DataFrame) -> pd.DataFrame:
     return converted
 
 
-def preprocess_era5_file(path: Path) -> pd.DataFrame:
-    """Read one ERA5-Land NetCDF file and return ClimateNet tabular columns."""
+def open_era5_subset(
+    path: Path,
+    *,
+    start: str | None = None,
+    end: str | None = None,
+    bbox: dict[str, list[float]] | None = None,
+    max_grid_cells: int | None = None,
+) -> Any:
+    """Open, validate and eagerly load a bounded ERA5-Land subset.
+
+    ``bbox`` uses ``{"latitude": [min, max], "longitude": [min, max]}``.
+    The explicit grid-cell limit is a dry-run guardrail: it raises instead of
+    silently sampling or accidentally materialising a full regional request.
+    """
     try:
         import xarray as xr
     except ImportError as exc:
         raise ImportError("xarray is required. Install dependencies with: pip install -r requirements.txt") from exc
 
-    region = infer_region_from_filename(path)
     dataset = xr.open_dataset(path)
-
     missing_variables = [name for name in ERA5_RENAME_MAP if name not in dataset.data_vars]
     if missing_variables:
         available = list(dataset.data_vars)
+        dataset.close()
         raise ValueError(
             f"{path} is missing expected ERA5 variables {missing_variables}. "
             f"Available variables: {available}"
         )
 
-    dataset = dataset[list(ERA5_RENAME_MAP)].rename(ERA5_RENAME_MAP)
+    time_name = next(
+        (name for name in ["valid_time", "time"] if name in dataset.coords),
+        None,
+    )
+    if time_name is None:
+        available = list(dataset.coords)
+        dataset.close()
+        raise ValueError(
+            f"{path} has no 'valid_time' or 'time' coordinate. "
+            f"Available coordinates: {available}"
+        )
+    subset = dataset[list(ERA5_RENAME_MAP)]
+    if start is not None or end is not None:
+        subset = subset.sel(
+            {time_name: slice(start or None, end or None)}
+        )
+    if bbox is not None:
+        for coordinate in ["latitude", "longitude"]:
+            if coordinate not in subset.coords:
+                dataset.close()
+                raise ValueError(
+                    f"{path} is missing required coordinate {coordinate!r}"
+                )
+            bounds = bbox.get(coordinate)
+            if bounds is None or len(bounds) != 2:
+                dataset.close()
+                raise ValueError(
+                    f"bbox.{coordinate} must contain [min, max]"
+                )
+            lower, upper = sorted(float(value) for value in bounds)
+            subset = subset.where(
+                (subset[coordinate] >= lower)
+                & (subset[coordinate] <= upper),
+                drop=True,
+            )
+
+    grid_cells = int(
+        subset.sizes.get("latitude", 0)
+        * subset.sizes.get("longitude", 0)
+    )
+    if grid_cells == 0 or subset.sizes.get(time_name, 0) == 0:
+        dataset.close()
+        raise ValueError(
+            f"ERA5 subset is empty for path={path}, start={start}, "
+            f"end={end}, bbox={bbox}"
+        )
+    if max_grid_cells is not None and grid_cells > max_grid_cells:
+        dataset.close()
+        raise ValueError(
+            f"ERA5 subset contains {grid_cells:,} grid cells, exceeding "
+            f"max_grid_cells={max_grid_cells:,}. Narrow the bounding box."
+        )
+    subset = subset.load()
+    dataset.close()
+    return subset
+
+
+def preprocess_era5_file(
+    path: Path,
+    *,
+    start: str | None = None,
+    end: str | None = None,
+    bbox: dict[str, list[float]] | None = None,
+    max_grid_cells: int | None = None,
+    region: str | None = None,
+    drop_invalid: bool = True,
+) -> pd.DataFrame:
+    """Read one ERA5-Land NetCDF file and return ClimateNet tabular columns.
+
+    Optional subset arguments are intended for readiness audits and dry-runs.
+    Existing callers retain the original full-file behaviour.
+    """
+    resolved_region = region or infer_region_from_filename(path)
+    dataset = open_era5_subset(
+        path,
+        start=start,
+        end=end,
+        bbox=bbox,
+        max_grid_cells=max_grid_cells,
+    )
+    dataset = dataset.rename(ERA5_RENAME_MAP)
     data = dataset.to_dataframe().reset_index()
     dataset.close()
 
     time_column = find_time_column(data)
     data[time_column] = pd.to_datetime(data[time_column])
-    data["region"] = region
+    data["region"] = resolved_region
     data["year"] = data[time_column].dt.year
     data["month"] = data[time_column].dt.month
 
     data = convert_units(data[PROJECT_SCHEMA_COLUMNS])
-    data = data.replace([np.inf, -np.inf], np.nan).dropna()
+    if drop_invalid:
+        data = data.replace([np.inf, -np.inf], np.nan).dropna()
 
     numeric_columns = [column for column in PROJECT_SCHEMA_COLUMNS if column != "region"]
     data[numeric_columns] = data[numeric_columns].round(6)
@@ -131,9 +225,82 @@ def preprocess_era5_directory(input_dir: Path, output_path: Path) -> pd.DataFram
     return climate_data
 
 
-def preprocess_era5_from_config(data_config: dict) -> pd.DataFrame:
+def preprocess_era5_files_streaming(
+    input_paths: list[Path],
+    output_path: Path,
+) -> dict[str, Any]:
+    """Write explicit NetCDF inputs incrementally with overwrite protection."""
+    if output_path.exists():
+        raise FileExistsError(
+            f"Refusing to overwrite existing processed data: {output_path}"
+        )
+    partial_path = output_path.with_suffix(output_path.suffix + ".partial")
+    if partial_path.exists():
+        raise FileExistsError(
+            f"Partial processed file already exists: {partial_path}. "
+            "Inspect it before retrying; it will not be overwritten."
+        )
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    total_rows = 0
+    regions: set[str] = set()
+    years: set[int] = set()
+    columns: list[str] = []
+    try:
+        for index, path in enumerate(input_paths):
+            print(f"Preprocessing {path}")
+            frame = preprocess_era5_file(path)
+            columns = list(frame.columns)
+            regions.update(str(value) for value in frame["region"].unique())
+            years.update(int(value) for value in frame["year"].unique())
+            frame.to_csv(
+                partial_path,
+                mode="w" if index == 0 else "a",
+                header=index == 0,
+                index=False,
+            )
+            total_rows += len(frame)
+            del frame
+            gc.collect()
+        partial_path.replace(output_path)
+    except Exception:
+        # Deliberately preserve the uniquely named partial for diagnosis.
+        raise
+    return {
+        "output_path": str(output_path),
+        "rows": total_rows,
+        "columns": columns,
+        "regions": sorted(regions),
+        "years": sorted(years),
+        "size_bytes": int(output_path.stat().st_size),
+    }
+
+
+def preprocess_era5_from_config(
+    data_config: dict,
+) -> pd.DataFrame | dict[str, Any]:
     """Preprocess ERA5 data using paths from data_config.yaml."""
     era5_config = data_config["era5"]
     input_dir = ensure_directory(resolve_project_path(era5_config["raw_dir"]))
     output_path = resolve_project_path(era5_config["processed_path"])
+    configured_files = era5_config.get("input_files")
+    if configured_files:
+        input_paths = [resolve_project_path(path) for path in configured_files]
+        missing = [str(path) for path in input_paths if not path.is_file()]
+        if missing:
+            raise FileNotFoundError(
+                f"Configured ERA5 input files do not exist: {missing}"
+            )
+        if len(set(input_paths)) != len(input_paths):
+            raise ValueError("era5.input_files contains duplicate paths")
+        if bool(era5_config.get("stream_output", False)):
+            return preprocess_era5_files_streaming(input_paths, output_path)
+        frames = [preprocess_era5_file(path) for path in input_paths]
+        climate_data = pd.concat(frames, ignore_index=True)
+        if output_path.exists():
+            raise FileExistsError(
+                f"Refusing to overwrite existing processed data: {output_path}"
+            )
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        climate_data.to_csv(output_path, index=False)
+        return climate_data
     return preprocess_era5_directory(input_dir, output_path)

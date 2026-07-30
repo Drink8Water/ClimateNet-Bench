@@ -35,8 +35,13 @@ Thumbs.db
 data/outputs/matplotlib-cache/
 outputs/matplotlib-cache/
 outputs/benchmark/
+outputs/benchmark_runs/
+outputs/data_audit/
+outputs/diagnostics/
 outputs/experiments/latest/
 data/raw/era5_land/
+# The local ERA5 path may be an external-disk symlink rather than a directory.
+data/raw/era5_land
 
 # Generated forecasting dataset (too large, rebuilt from features)
 data/processed/forecasting_samples.csv

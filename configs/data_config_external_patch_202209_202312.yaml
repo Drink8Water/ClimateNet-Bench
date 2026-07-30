@@ -1,0 +1,26 @@
+# Corrected accumulated-variable patch for the ECMWF-documented bad period.
+# This is intentionally isolated from the original full-data configuration.
+
+era5_patch:
+  dataset_name: reanalysis-era5-land-monthly-means
+  product_type: monthly_averaged_reanalysis_by_hour_of_day
+  time: "00:00"
+  data_format: netcdf
+  download_format: unarchived
+  raw_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land_patch_hourly_monthly_202209_202312
+  audit_json: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_accumulated_patch_202209_202312_audit.json
+  audit_markdown: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_accumulated_patch_202209_202312_audit.md
+  periods:
+    "2022": ["09", "10", "11", "12"]
+    "2023": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+  variables:
+    - surface_solar_radiation_downwards
+    - total_precipitation
+    - total_evaporation
+  regions:
+    Sahara:
+      cds_area: [30.0, -20.0, 15.0, 30.0]
+      old_full_file: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land/era5_land_sahara_2019_2023_all_months.nc
+    East China:
+      cds_area: [35.0, 105.0, 20.0, 122.0]
+      old_full_file: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land/era5_land_east_china_2019_2023_all_months.nc

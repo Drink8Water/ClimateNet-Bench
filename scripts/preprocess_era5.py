@@ -21,8 +21,16 @@ def main() -> None:
     data_config = load_yaml(args.data_config)
     climate_data = preprocess_era5_from_config(data_config)
     print(f"Saved ERA5 tabular data to {data_config['era5']['processed_path']}")
-    print(f"Rows: {len(climate_data):,}, Columns: {len(climate_data.columns)}")
-    print("Regions:", ", ".join(sorted(climate_data["region"].unique())))
+    if isinstance(climate_data, dict):
+        print(
+            f"Rows: {climate_data['rows']:,}, "
+            f"Columns: {len(climate_data['columns'])}"
+        )
+        print("Regions:", ", ".join(climate_data["regions"]))
+        print(f"Size: {climate_data['size_bytes']:,} bytes")
+    else:
+        print(f"Rows: {len(climate_data):,}, Columns: {len(climate_data.columns)}")
+        print("Regions:", ", ".join(sorted(climate_data["region"].unique())))
 
 
 if __name__ == "__main__":

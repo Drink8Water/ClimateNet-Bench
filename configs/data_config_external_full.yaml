@@ -1,0 +1,65 @@
+# Full external-disk ERA5-Land configuration.
+#
+# Raw NetCDF and large tabular artifacts stay on the external PSSD. This file
+# is intentionally separate from data_config_external_dryrun.yaml.
+
+# Retained for source-data audit only; its accumulated variables are invalid.
+result_status: source_data_invalid
+input_data_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_climate_data_full_2019_2023.csv
+features_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023.csv
+physical_features_audit_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_physical_features_full_2019_2023_audit.json
+target_column: evaporation_anomaly
+region_column: region
+spatial_columns:
+  - latitude
+  - longitude
+time_columns:
+  - year
+  - month
+required_raw_columns:
+  - region
+  - year
+  - month
+  - latitude
+  - longitude
+  - temperature
+  - precipitation
+  - radiation
+  - soil_moisture
+  - u_wind
+  - v_wind
+  - evaporation
+
+era5:
+  dataset_name: reanalysis-era5-land-monthly-means
+  raw_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land
+  processed_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_climate_data_full_2019_2023.csv
+  audit_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_full_2019_2023_readiness_v2.json
+  processed_audit_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/audit/era5_climate_data_full_2019_2023_audit.json
+  stream_output: true
+  input_files:
+    - /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land/era5_land_sahara_2019_2023_all_months.nc
+    - /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land/era5_land_east_china_2019_2023_all_months.nc
+  safe_default_years:
+    - "2019"
+  safe_default_months:
+    - "01"
+  full_years:
+    - "2019"
+    - "2020"
+    - "2021"
+    - "2022"
+    - "2023"
+  variables:
+    - 2m_temperature
+    - total_precipitation
+    - surface_solar_radiation_downwards
+    - total_evaporation
+    - volumetric_soil_water_layer_1
+    - 10m_u_component_of_wind
+    - 10m_v_component_of_wind
+  regions:
+    Sahara:
+      cds_area: [30.0, -20.0, 15.0, 30.0]
+    East China:
+      cds_area: [35.0, 105.0, 20.0, 122.0]
