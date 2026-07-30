@@ -1,52 +1,64 @@
 # ClimateNet-Bench
 
-ClimateNet-Bench is a full-stack machine learning evaluation platform for land-surface hydroclimate stress benchmarks. It combines a reproducible climate ML benchmark with a FastAPI/PostgreSQL/Celery backend and a Vue research dashboard.
+ClimateNet-Bench is a leakage-aware spatio-temporal machine-learning
+benchmark for land-surface hydroclimate analysis. Its corrected ERA5-Land
+workflow combines source-data auditing, per-split train-only preprocessing,
+multi-seed evaluation, and repeated region-stratified spatial folds.
 
-The current MVP focuses on a practical evaluation loop:
+The current formal study predicts next-month evaporation anomalies in Sahara
+and East China for 2019–2023 using traditional Linear and LightGBM baselines.
+The repository also contains an optional evaluation API and dashboard, but the
+scientific benchmark and its auditable artifacts are the primary project.
 
 ```text
-prediction.csv upload
-  -> submission record
-  -> Celery evaluation task
-  -> metrics persisted in PostgreSQL
-  -> local artifact storage
-  -> ranked leaderboard API
-  -> Vue dashboard
+audited ERA5-Land records
+  -> corrected accumulated variables
+  -> row-wise physical features
+  -> spatial/temporal split
+  -> train-only climatology and scaling
+  -> lag samples
+  -> isolated model task
+  -> metrics, predictions, metadata
 ```
 
 ## Current Status
 
 | Area | Status |
 |---|---|
-| Week 1 benchmark core | Implemented: regression metrics, event detection metrics, LightGBM tests, mini leaderboard support |
-| Week 2 backend platform | Implemented: SQLAlchemy models, Alembic migration, submission API, Celery worker, artifact download, leaderboard filters |
-| Docker compose | Implemented and validated with `api`, `postgres`, `redis`, `worker` |
-| Frontend workbench | In progress: Vue dashboard, submission page, evaluation detail page, DB-backed leaderboard |
-| Portfolio packaging | Planned: demo scripts, screenshots, architecture docs, CI smoke demo |
+| Corrected source data | Ready: 5,318,160 records, continuous 2019–2023 coverage, no tabular NaN/Inf or duplicate grid-month keys |
+| Leakage controls | Per-split train-only climatology, anomaly generation, event thresholds, and standardization |
+| Multi-seed benchmark | 18/18 corrected tasks completed across seeds 42, 123, and 2026 |
+| Repeated spatial benchmark | 10/10 tasks completed across five region-stratified, leakage-free folds |
+| Reproducibility | Isolated run directories, resolved configs, hashes, git state, predictions, metrics, and preprocessing provenance |
 
 Latest local verification:
 
 ```bash
 env PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /home/drink8water/Extra/conda_envs/climatenet-py311/bin/pytest -q
-# 388 passed, 1 skipped
-
-cd frontend
-npm run build
-# vite production build passes
+# 452 passed, 1 skipped
 ```
 
-Docker compose validation has also been run on a remote Linux host. The tested flow was:
+## Final Corrected Results
 
-```text
-docker compose up -d
-GET /api/health
-GET /api/models
-POST /api/submissions/upload
-GET /api/evaluation-runs/{id}/status
-GET /api/evaluation-runs/{id}
-GET /api/leaderboard
-GET /api/artifacts/{id}/download
-```
+| Result | Value |
+|---|---:|
+| LightGBM random RMSE, 3 seeds | 5.766 ± 0.020 |
+| LightGBM temporal RMSE, 3 seeds | 6.309 ± 0.015 |
+| LightGBM repeated-spatial RMSE, 5 folds | 7.066 ± 1.093 |
+| Linear repeated-spatial RMSE, 5 folds | 9.782 ± 0.773 |
+| LightGBM repeated-spatial improvement | 27.8% mean RMSE reduction; wins 5/5 folds |
+
+These claims are limited to Sahara and East China. The former uncorrected v1
+runs are explicitly marked `source_data_invalid` and are retained only as a
+data-audit case.
+
+Start here:
+
+- [Final corrected results](docs/FINAL_RESULTS.md)
+- [Benchmark report](docs/BENCHMARK_REPORT.md)
+- [Artifact index](docs/ARTIFACT_INDEX.md)
+- [Configuration index](docs/CONFIG_INDEX.md)
+- [Reproduction guide](docs/reproduce.md)
 
 ## What This Project Evaluates
 
@@ -69,7 +81,12 @@ Core metrics:
 | Event detection | POD, FAR, CSI, intensity bias |
 | Generalization | Split-wise leaderboard, climate-zone filtering hooks |
 
-## Architecture
+## Optional Evaluation Platform
+
+The remaining application layer is optional and is not required to reproduce
+the corrected benchmark results.
+
+### Architecture
 
 ```mermaid
 flowchart LR
@@ -203,6 +220,38 @@ Run backend tests:
 env PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /home/drink8water/Extra/conda_envs/climatenet-py311/bin/pytest -q
 ```
 
+## Reproducible Benchmark Runs
+
+Each benchmark invocation creates a new isolated directory:
+
+```text
+outputs/benchmark_runs/<benchmark>-<data-source>-<utc>-<hash>-<suffix>/
+```
+
+Synthetic and ERA5-Land results therefore cannot overwrite or share an
+experiment registry. A fresh model object is created for every
+`model × split × feature_set × seed` combination, and the configured seed is
+applied immediately before model construction and fitting.
+
+Every run contains `config_resolved.yaml`, `run_metadata.json`, split
+manifests, train-only preprocessing artifacts, canonical per-task metrics and
+predictions, `leaderboard.csv`, and `summary.json`. Metadata includes the data
+audit, environment versions, input hashes, git commit and dirty flag, task
+failures, and preprocessing fallback totals. Existing output runs are
+preserved.
+
+Build a leaderboard from the newest isolated run:
+
+```bash
+python scripts/build_leaderboard.py \
+  --experiments-dir outputs/benchmark_runs/<run-id>/experiments \
+  --output-dir outputs/benchmark_runs/<run-id>
+```
+
+Use `--run-id <id>` to select a specific historical run. The leaderboard
+builder never combines different run IDs or data sources. See
+[`docs/reproduce.md`](docs/reproduce.md) for the complete workflow.
+
 Run the API without a database:
 
 ```bash
@@ -258,35 +307,19 @@ ClimateNet-Bench/
 └── requirements-api.txt      # Docker runtime dependencies
 ```
 
-## Roadmap
+## Project Boundaries
 
-Immediate next iteration:
-
-1. Replace the manual upload-first workflow with an automated demo dashboard.
-2. Add a one-click benchmark run that creates submissions, evaluates them, and refreshes the leaderboard.
-3. Redesign the frontend around an experiment operations board:
-   - run queue
-   - latest metrics
-   - leaderboard movements
-   - event detection panel
-   - artifact/log panel
-4. Add `scripts/demo_smoke.py` for a 30-second local demo.
-5. Add GitHub Actions for `ruff`, `pytest`, and demo smoke validation.
-
-Planned documentation:
-
-```text
-docs/SYSTEM_ARCHITECTURE.md
-docs/BENCHMARK_REPORT.md
-docs/APPLICATION_PORTFOLIO.md
-```
+The final benchmark does not claim global performance, climate-zone transfer,
+or superiority over deep-learning models. Future work can map climate zones,
+add broader regions/years, and connect the existing dashboard to the
+corrected summary artifacts without changing the established result provenance.
 
 ## Citation
 
 ```bibtex
 @software{climatenet_bench,
   author = {ClimateNet-Bench Contributors},
-  title = {ClimateNet-Bench: A Full-Stack ML Evaluation Platform for Hydroclimate Stress Benchmarks},
+  title = {ClimateNet-Bench: A Leakage-Aware Spatio-Temporal ERA5-Land Benchmark},
   year = {2026},
   url = {https://github.com/Drink8Water/ClimateNet-Bench}
 }
