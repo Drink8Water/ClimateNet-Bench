@@ -1,0 +1,29 @@
+diagnostic_name: era5_land_corrected_spatial_split_composition
+output_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/diagnostics/era5_land_corrected_spatial_split_composition
+multi_seed_summary_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs/era5_land_v1_corrected_multiseed_lite_summary
+multi_seed_summary_file: multiseed_summary.json
+physical_features_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023_corrected.csv
+target_split_id: spatial_block
+target_split_protocol: spatial_block_holdout
+seeds: [42, 123, 2026]
+# These paths are verified against multiseed_summary.json before use. Seed 42
+# was resolved from that summary rather than inferred from its directory name.
+run_dirs:
+  "42": /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs/era5-land-sahara-eastchina-corrected-v1-era5-land-corrected-20260730T064523304383Z-348c8f24-2b3cf0
+  "123": /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs/era5-land-sahara-eastchina-corrected-v1-lite-multiseed-seed123-era5-land-corrected-20260730T071040084392Z-98335dc3-40812a
+  "2026": /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs/era5-land-sahara-eastchina-corrected-v1-lite-multiseed-seed2026-era5-land-corrected-20260730T072218388306Z-98357658-df5b2d
+models:
+  - linear_regression
+  - lightgbm
+feature_set: full
+regions:
+  - Sahara
+  - East China
+feature_patterns:
+  - temperature_anomaly_lag_*
+  - precipitation_anomaly_lag_*
+  - radiation_anomaly_lag_*
+  - soil_moisture_anomaly_lag_*
+  - dryness_proxy_log1p_lag_*
+  - saturation_vapor_pressure_lag_*
+quantile_sample_stride: 20

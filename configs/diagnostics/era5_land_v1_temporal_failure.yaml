@@ -1,0 +1,34 @@
+diagnostic_name: era5_land_v1_temporal_failure
+output_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/diagnostics/era5_land_v1_temporal_failure
+physical_features_path: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023.csv
+prepared_temporal_cache: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs/era5-land-sahara-eastchina-v1-era5-land-20260730T012055094403Z-8cfe21a0-4e68b2/preprocessing/temporal/prepared_samples.pkl
+seeds: [42, 123, 2026]
+run_dirs:
+  "42": /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs/era5-land-sahara-eastchina-v1-era5-land-20260730T012055094403Z-8cfe21a0-4e68b2
+  "123": /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs/era5-land-sahara-eastchina-v1-multiseed-seed123-era5-land-20260730T020318399976Z-261e682b-a4a68d
+  "2026": /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/benchmark_runs/era5-land-sahara-eastchina-v1-multiseed-seed2026-era5-land-20260730T021517210737Z-60977264-9b5cf0
+models: [linear_regression, lightgbm]
+feature_set: full
+split_protocol: temporal
+train_years: [2019, 2020, 2021]
+validation_years: [2022]
+test_years: [2023]
+raw_shift_features:
+  - temperature
+  - precipitation
+  - radiation
+  - soil_moisture
+  - wind_speed
+  - saturation_vapor_pressure
+  - dryness_proxy_log1p
+chunksize: 250000
+quantile_sample_stride: 20
+repeated_spatial_plan:
+  folds: 5
+  block_size_degrees: 5.0
+  region_stratified: true
+  group_key: [region, latitude, longitude]
+  no_grid_cell_overlap: true
+  models: [linear_regression, lightgbm]
+  feature_sets: [full]
+  save_predictions: sampled

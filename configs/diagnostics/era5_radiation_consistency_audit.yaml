@@ -1,0 +1,18 @@
+audit_name: era5_radiation_consistency_audit
+output_dir: /media/drink8water/拯救者PSSD/ClimateNet-Bench/outputs/diagnostics/era5_radiation_consistency_audit
+raw_files:
+  Sahara: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land/era5_land_sahara_2019_2023_all_months.nc
+  East China: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/raw/era5_land/era5_land_east_china_2019_2023_all_months.nc
+processed_csv: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_climate_data_full_2019_2023.csv
+physical_features_csv: /media/drink8water/拯救者PSSD/ClimateNet-Bench/data/processed/era5_physical_features_full_2019_2023.csv
+chunksize: 250000
+expected_start: "2019-01"
+expected_end: "2023-12"
+train_years: [2019, 2020, 2021]
+affected_period:
+  start: "2022-09"
+  end: "2024-02"
+official_sources:
+  data_documentation: https://confluence.ecmwf.int/pages/viewpage.action?pageId=222471664
+  known_issue: https://confluence.ecmwf.int/pages/viewpage.action?pageId=402639006
+  conversion_table: https://confluence.ecmwf.int/spaces/CKB/pages/197702790/Conversion%2Btable%2Bfor%2Baccumulated%2Bvariables%2Btotal%2Bprecipitation%2Bfluxes
