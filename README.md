@@ -7,8 +7,9 @@ multi-seed evaluation, and repeated region-stratified spatial folds.
 
 The current formal study predicts next-month evaporation anomalies in Sahara
 and East China for 2019–2023 using traditional Linear and LightGBM baselines.
-The repository also contains an optional evaluation API and dashboard, but the
-scientific benchmark and its auditable artifacts are the primary project.
+The repository also contains an optional evaluation API and a Vue single-page
+results dashboard, but the scientific benchmark and its auditable artifacts
+are the primary project.
 
 ```text
 audited ERA5-Land records
@@ -81,16 +82,23 @@ Core metrics:
 | Event detection | POD, FAR, CSI, intensity bias |
 | Generalization | Split-wise leaderboard, climate-zone filtering hooks |
 
-## Optional Evaluation Platform
+## Results Dashboard and Optional Evaluation Platform
 
-The remaining application layer is optional and is not required to reproduce
-the corrected benchmark results.
+The current frontend is a compact Vue 3 + ECharts results dashboard for the
+corrected ERA5-Land benchmark. It reads the curated formal-results dataset in
+`frontend/src/data/finalBenchmarkResults.js` and intentionally excludes
+synthetic smoke outputs and historical `source_data_invalid` runs.
+
+The backend evaluation API remains in the repository as an optional platform
+layer for submission/evaluation workflows. It is not required to reproduce the
+corrected benchmark results.
 
 ### Architecture
 
 ```mermaid
 flowchart LR
-    UI["Vue research dashboard"] --> API["FastAPI backend"]
+    UI["Vue corrected-results dashboard"] --> Static["Curated finalBenchmarkResults.js"]
+    APIClient["Optional API clients"] --> API["FastAPI backend"]
     API --> DB["PostgreSQL"]
     API --> Redis["Redis broker"]
     API --> Artifacts["Local artifact volume"]
@@ -99,6 +107,41 @@ flowchart LR
     Eval --> DB
     Worker --> Artifacts
     API --> Leaderboard["Leaderboard API"]
+```
+
+### Frontend
+
+The frontend lives under `frontend/` and currently presents one formal results
+page with:
+
+| Section | Purpose |
+|---|---|
+| Dataset and provenance | Corrected ERA5-Land records, lag samples, source-data audit, and invalid-run exclusion |
+| Final metrics | Corrected multi-seed and repeated-spatial mean/std results |
+| Split diagnostics | Temporal robustness, repeated spatial folds, and single-spatial-holdout caveats |
+| Regional findings | East China vs Sahara error pattern |
+| Reproducibility | Links to final result, artifact, config, and benchmark reports |
+
+Run it locally:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open:
+
+```text
+http://127.0.0.1:5173
+```
+
+If port `5173` is busy, Vite will print the alternate port.
+
+Build:
+
+```bash
+npm run build
 ```
 
 ### Backend
@@ -258,38 +301,6 @@ Run the API without a database:
 env PYTHONPATH=$(pwd) /home/drink8water/Extra/conda_envs/climatenet-py311/bin/uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
 
-Run the frontend:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Open:
-
-```text
-http://127.0.0.1:5173
-```
-
-If port `5173` is busy, Vite will print the alternate port.
-
-## Frontend Pages
-
-| Page | Purpose |
-|---|---|
-| Overview | Project status, benchmark context, summary panels |
-| Evaluation Platform | Upload `prediction.csv`, poll async evaluation, show metrics |
-| Evaluation Detail | Inspect a completed run and its artifacts |
-| Leaderboard | DB-backed ranking with metric and event filters |
-| Split Difficulty | Compare split protocols |
-| Forecast Explorer | Explore predictions and errors |
-| Uncertainty | Calibration and interval diagnostics |
-| Physical Audit | Physical consistency checks |
-| Spatial Diagnostics | Spatial/time-series diagnostics |
-
-The frontend is bilingual through the existing `i18n` helper and is intentionally styled as a research workbench rather than a marketing site.
-
 ## Repository Layout
 
 ```text
@@ -297,7 +308,7 @@ ClimateNet-Bench/
 ├── backend/                  # FastAPI, SQLAlchemy, Celery, platform services
 ├── alembic/                  # Database migrations
 ├── src/climatenet/           # Benchmark, data, evaluation, model code
-├── frontend/                 # Vue 3 dashboard
+├── frontend/                 # Vue 3 corrected-results dashboard
 ├── tests/                    # Pytest suite
 ├── configs/                  # Benchmark configs
 ├── scripts/                  # CLI/demo scripts
@@ -311,8 +322,8 @@ ClimateNet-Bench/
 
 The final benchmark does not claim global performance, climate-zone transfer,
 or superiority over deep-learning models. Future work can map climate zones,
-add broader regions/years, and connect the existing dashboard to the
-corrected summary artifacts without changing the established result provenance.
+add broader regions/years, and extend the results dashboard without changing
+the established result provenance.
 
 ## Citation
 
