@@ -1,5 +1,20 @@
-# Vue 3 + Vite
+# ClimateNet-Bench frontend
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Single-page academic results interface for the corrected ERA5-Land benchmark.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+The page intentionally reads only the curated formal-result dataset in
+`src/data/finalBenchmarkResults.js`. It does not display smoke, synthetic, or
+historical `source_data_invalid` runs.
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+## Production build
+
+```bash
+npm run build
+```
